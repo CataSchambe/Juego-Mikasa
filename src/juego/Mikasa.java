@@ -51,7 +51,7 @@ public class Mikasa {
 	} 
 	
 	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
-		return x-ancho/2 < obstaculo.getAncho() - obstaculo.getAncho() || x+ancho/2 > obstaculo.getAncho() || y-alto/2 < obstaculo.getAlto() - obstaculo.getAlto() || y+alto/2 > obstaculo.getAlto();
+		return x-ancho/2 > obstaculo.getAncho() - obstaculo.getAncho() && x+ancho/2 < obstaculo.getAncho() || y-alto/2 > obstaculo.getAlto() - obstaculo.getAlto() && y+alto/2 < obstaculo.getAlto();
 	}
 
 	public double getX() {

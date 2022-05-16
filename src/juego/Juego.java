@@ -15,7 +15,7 @@ public class Juego extends InterfaceJuego {
 	private Image fondo;
 
 	public Juego() {
-		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 1000, 1000);
+		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);
 		// despues ponerlo en 800 x 600
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 3, 0);
 		this.kyojin = new Kyojin(entorno.ancho() / 2, entorno.alto() - 15, 2);

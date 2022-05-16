@@ -13,6 +13,8 @@ public class Obstaculo {
 	private double alto;
 	private Color color;
 	private Image img;
+	private Image img2;
+	private Image img3;
 	// despues va a hacer falta poner varias imagenes, como casas, arboles, etc.
 	
 	public Obstaculo (double x, double y) {

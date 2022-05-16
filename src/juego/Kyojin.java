@@ -19,12 +19,23 @@ public class Kyojin {
 		this.x = x;
 		this.y = y;
 		this.velocidad = velocidad;
-		this.ancho = 200;
-		this.alto = 20;
+		this.ancho = 20;
+		this.alto = 100;
 	}
 	
 	public void dibujar(Entorno e) {
-//		e.dibujarRectangulo(x, y, ancho, alto, 0, color);
+		e.dibujarRectangulo(x, y, ancho, alto, 0, Color.BLUE);	
+	}
+	
+	public void moverseHaciaMikasa() {
+		
+	}
+	
+	public boolean chocasteConEntorno() {
+		
+	}
+	
+	public boolean chocasteConObstaculo() {
 		
 	}
 }
