@@ -24,6 +24,7 @@ public class Kyojin {
 	}
 	
 	public void dibujar(Entorno e) {
-		e.dibujarRectangulo(x, y, ancho, alto, 0, color);
+//		e.dibujarRectangulo(x, y, ancho, alto, 0, color);
+		
 	}
 }
