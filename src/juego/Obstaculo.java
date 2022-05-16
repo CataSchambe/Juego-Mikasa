@@ -21,12 +21,12 @@ public class Obstaculo {
 		this.ancho = 70;
 		this.alto = 20;
 		this.color = Color.RED;
-//		this.img = Herramientas.cargarImagen(null); //TODO
+		this.img = Herramientas.cargarImagen("edificios.png");
 	}
 	
 	public void dibujar (Entorno e) {
 		e.dibujarRectangulo(x, y, ancho, alto, 0, color);
-//		e.dibujarImagen(img, x, y, ancho, alto); //TODO
+		e.dibujarImagen(img, x, y, 0, 0.2); //FIXME
 	}
 	
 	public double getX() {

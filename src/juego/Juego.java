@@ -47,6 +47,10 @@ public class Juego extends InterfaceJuego {
 		if (mikasa.chocasteConEntorno(entorno)) {
 			System.out.println("Choque");
 		}
+		
+		if (mikasa.chocasteConObstaculo(obstaculo)) {
+			System.out.println("choque con obstaculo");
+		}
 
 	}
 
