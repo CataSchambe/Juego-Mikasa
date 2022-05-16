@@ -12,9 +12,11 @@ public class Obstaculo {
 	private double ancho;
 	private double alto;
 	private Color color;
-	private Image img;
-	private Image img2;
-	private Image img3;
+	
+	private Image img; // imgArbol
+	private Image img2; // imgEdificio
+	private Image img3; // imgLeft, imgDisparando
+	
 	// despues va a hacer falta poner varias imagenes, como casas, arboles, etc.
 	
 	public Obstaculo (double x, double y) {
@@ -23,7 +25,7 @@ public class Obstaculo {
 		this.ancho = 70;
 		this.alto = 20;
 		this.color = Color.RED;
-		this.img = Herramientas.cargarImagen("edificios.png");
+		this.img = Herramientas.cargarImagen("edificios.png"); // mikasa-derecha.png
 	}
 	
 	public void dibujar (Entorno e) {
@@ -46,4 +48,5 @@ public class Obstaculo {
 	public double getAlto() {
 		return alto;
 	}
+	
 }

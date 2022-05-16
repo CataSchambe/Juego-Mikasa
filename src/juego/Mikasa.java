@@ -6,12 +6,16 @@ import entorno.Entorno;
 import entorno.Herramientas;
 
 public class Mikasa {
+	
 	private double x;
 	private double y;
+	
 	private double velocidad;
 	private double angulo;
+	
 	private double ancho;
 	private double alto;
+	
 	private Image img;
 	private Color color;      // esto es solo para el rectangulo que despues se termina ocultando, asi que da igual el color
 
@@ -30,7 +34,8 @@ public class Mikasa {
 		e.dibujarRectangulo(x, y, ancho, alto, 0, color);
 		e.dibujarImagen(img, this.x, this.y, 0, 0.3);                //ultimo cambio (para que tenga imagen mikasa)
 	}
-
+	
+	// cuidado! no usar setters
 	public void girar(double modificador) {
 		angulo = angulo + modificador;
 		if (angulo > Math.PI * 2) {
@@ -69,4 +74,5 @@ public class Mikasa {
 	public double getAlto() {
 		return alto;
 	}
+	
 }

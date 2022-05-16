@@ -9,10 +9,12 @@ public class Kyojin {
 	
 	private double x;
 	private double y;
+	
 	private double velocidad;
 	private double ancho;
 	private double alto;
 	private Color color;
+	
 	//private Image img;
 	
 	public Kyojin(double x, double y, double velocidad) {
