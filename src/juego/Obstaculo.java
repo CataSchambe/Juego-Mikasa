@@ -28,4 +28,20 @@ public class Obstaculo {
 		e.dibujarRectangulo(x, y, ancho, alto, 0, color);
 //		e.dibujarImagen(img, x, y, ancho, alto); //TODO
 	}
+	
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public double getAncho() {
+		return ancho;
+	}
+
+	public double getAlto() {
+		return alto;
+	}
 }

@@ -46,14 +46,13 @@ public class Mikasa {
 		y = y + Math.sin(angulo) * 2;
 	}
 	
-	/* TODO
-	public boolean chocasteConObstaculo() {
-		
-	}
+//	public boolean chocasteConObstaculo() {
+//		
+//	}
 	
-	public boolean chocasteConEntorno() {
-		
-	} */
+	public boolean chocasteConEntorno( Entorno entorno) {
+		return x-ancho/2 < entorno.ancho() - entorno.ancho() || x+ancho/2 > entorno.ancho() || y-alto/2 < entorno.alto() - entorno.alto() || y+alto/2 > entorno.alto();
+	} 
 
 	public double getX() {
 		return x;

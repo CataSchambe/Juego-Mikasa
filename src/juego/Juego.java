@@ -43,6 +43,10 @@ public class Juego extends InterfaceJuego {
 			mikasa.avanzar();
 			//mikasa.acelerar();    SI USAMOS ACELERAR
 		}
+		
+		if (mikasa.chocasteConEntorno(entorno)) {
+			System.out.println("Choque");
+		}
 
 	}
 
