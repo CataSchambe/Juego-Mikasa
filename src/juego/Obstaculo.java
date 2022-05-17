@@ -13,24 +13,22 @@ public class Obstaculo {
 	private double alto;
 	private Color color;
 	
-	private Image img; // imgArbol
-	private Image img2; // imgEdificio
-	private Image img3; // imgLeft, imgDisparando
-	
-	// despues va a hacer falta poner varias imagenes, como casas, arboles, etc.
-	
+	private Image imgEdificio; 
+	private Image imgArbol; 
+	private Image imgSuero; 	
+		
 	public Obstaculo (double x, double y) {
 		this.x = x;
 		this.y = y;
 		this.ancho = 70;
 		this.alto = 20;
 		this.color = Color.RED;
-		this.img = Herramientas.cargarImagen("edificios.png"); // mikasa-derecha.png
+		this.imgEdificio = Herramientas.cargarImagen("edificios.png"); // mikasa-derecha.png
 	}
 	
 	public void dibujar (Entorno e) {
 		e.dibujarRectangulo(x, y, ancho, alto, 0, color);
-		e.dibujarImagen(img, x, y, 0, 0.2); //FIXME
+		e.dibujarImagen(imgEdificio, x, y, 0, 0.2); //FIXME
 	}
 	
 	public double getX() {

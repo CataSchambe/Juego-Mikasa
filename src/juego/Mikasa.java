@@ -25,7 +25,7 @@ public class Mikasa {
 		this.angulo = angulo;
 		this.tamaño = 50;
 		this.color = Color.YELLOW;
-		this.img = Herramientas.cargarImagen("mikasa (1).png");
+		this.img = Herramientas.cargarImagen("mikasa.png");
 	}
 
 	public void dibujar(Entorno e) {
@@ -54,15 +54,19 @@ public class Mikasa {
 	}
 
 	public void girarIzquierda() {
-
+		x -= velocidad;
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) {
 		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2;
 	}
 
-	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
+	//public boolean chocasteConObstaculo(Obstaculo obstaculo) {
 
+	//}
+	
+	public double getTamaño() {
+		return tamaño;
 	}
 
 	public double getX() {
