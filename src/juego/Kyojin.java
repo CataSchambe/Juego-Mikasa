@@ -33,13 +33,16 @@ public class Kyojin {
 	}
 	
 	public void moverseHaciaMikasa() {
-		x += velocidad * Math.cos(angulo);
+		x += velocidad * Math.cos(angulo);    //prueba del pong
 		y += velocidad * Math.sin(angulo);
 	}
 	
 	public boolean chocasteConEntorno(Entorno entorno) {
 		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2;
-
+	}
+	
+	public void cambiarDeDireccion() {   
+		angulo += Math.PI / 2;  //todavia hay que ver que hace si sale del entorno
 	}
 	
 //	public boolean chocasteConObstaculo() {
@@ -48,7 +51,10 @@ public class Kyojin {
 	
 	public boolean chocasteConMikasa(Mikasa mikasa) {
 		return x > mikasa.getX() - mikasa.getTamaño() / 2 && x < mikasa.getX() + mikasa.getTamaño() / 2
-				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2;
-
+				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2; //FIXME
+	}
+	
+	public double getTamaño() {
+		return tamaño;
 	}
 }

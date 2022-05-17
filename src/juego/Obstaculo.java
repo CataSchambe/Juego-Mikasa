@@ -14,8 +14,8 @@ public class Obstaculo {
 	private Color color;
 	
 	private Image imgEdificio; 
-	private Image imgArbol; 
-	private Image imgSuero; 	
+//	private Image imgArbol; 
+//	private Image imgSuero; 	
 		
 	public Obstaculo (double x, double y) {
 		this.x = x;
