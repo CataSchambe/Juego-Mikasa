@@ -33,13 +33,11 @@ public class Juego extends InterfaceJuego {
 		obstaculo.dibujar(entorno);
 
 		if (entorno.estaPresionada('a')) {
-			mikasa.girar(-1); // -1 a modo de ejemplo, luego corregirlo
-			mikasa.girarEnSentidoAntihorario();
+			mikasa.girarIzquierda();
 		}
 
 		if (entorno.estaPresionada('d')) {
-			mikasa.girar(1); // 1 a modo de ejemplo, luego corregirlo
-			mikasa.girarEnSentidoHorario();
+			mikasa.girarDerecha();
 		}
 
 		if (entorno.estaPresionada('w')) {
@@ -49,7 +47,7 @@ public class Juego extends InterfaceJuego {
 
 		if (mikasa.chocasteConEntorno(entorno)) {
 			System.out.println("Choque");
-			mikasa.detener(); // piensenlón
+//			mikasa.detener(); // Pensar que hacer ante colisiones
 		}
 
 		if (mikasa.chocasteConObstaculo(obstaculo)) {
