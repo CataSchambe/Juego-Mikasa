@@ -42,18 +42,27 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (entorno.estaPresionada('w')) {
-			mikasa.avanzar();
+			//mikasa.avanzar();
+			mikasa.caminarHaciaArriba();
 			// mikasa.acelerar(); SI USAMOS ACELERAR
+		}
+		
+		if (entorno.estaPresionada('s')) {
+			mikasa.caminarHaciaAbajo();
 		}
 
 		if (mikasa.chocasteConEntorno(entorno)) {
 			System.out.println("Choque");
-//			mikasa.detener(); // Pensar que hacer ante colisiones
+			mikasa.detener(); 
+			// Pensar que hacer ante colisiones
 		}
 
 //		if (mikasa.chocasteConObstaculo(obstaculo)) {
 //			System.out.println("choque con obstaculo");
 //		}
+		if (kyojin.chocasteConEntorno(entorno)) {
+			
+		}
 
 	}
 

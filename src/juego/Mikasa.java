@@ -50,11 +50,19 @@ public class Mikasa {
 	}
 
 	public void girarDerecha() {
-
+		x += velocidad;
 	}
 
 	public void girarIzquierda() {
 		x -= velocidad;
+	}
+	
+	public void caminarHaciaArriba() {
+		y--;
+	}
+	
+	public void caminarHaciaAbajo() {
+		y++;
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) {
@@ -64,6 +72,9 @@ public class Mikasa {
 	//public boolean chocasteConObstaculo(Obstaculo obstaculo) {
 
 	//}
+	public void detener() {
+		
+	}
 	
 	public double getTamaño() {
 		return tamaño;
