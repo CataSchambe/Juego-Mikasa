@@ -13,15 +13,27 @@ public class Juego extends InterfaceJuego {
 
 	private Mikasa mikasa;
 	private Kyojin kyojin;
-	private Obstaculo obstaculo;
+	private Kyojin[] variosKyojins;
+	
+	private Obstaculo[] obstaculo;
 	private Image fondo;
 
 	public Juego() {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 700);
 		// despues ponerlo en 800 x 600
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 3, 0);
-		this.kyojin = new Kyojin(entorno.ancho() / 2, entorno.alto() +5, 2);
-		this.obstaculo = new Obstaculo(Math.random() * (entorno.ancho() - 0) + 0, Math.random() * (entorno.alto() - 0));
+		this.kyojin = new Kyojin(entorno.ancho() / 3, entorno.alto() / 3, 2);
+		variosKyojins = new Kyojin[5];
+		for (int i = 0; i < variosKyojins.length; i++) {
+			variosKyojins[i] = new Kyojin(Math.random() * entorno.ancho() / 3, entorno.alto() / 3, 2);
+		}
+		obstaculo = new Obstaculo[5];
+		for (int i = 0; i < obstaculo.length; i++) {
+			obstaculo[i] = new Obstaculo(Math.random() * (entorno.ancho() - 0) + 0,
+					(Math.random() * (entorno.alto() - 0)));
+		}
+		// this.obstaculo = new Obstaculo(Math.random() * (entorno.ancho() - 0) + 0,
+		// Math.random() * (entorno.alto() - 0));
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
 		this.entorno.iniciar();
 	}
@@ -30,7 +42,23 @@ public class Juego extends InterfaceJuego {
 		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 		mikasa.dibujar(entorno);
 		kyojin.dibujar(entorno);
-		obstaculo.dibujar(entorno);
+		// obstaculo.dibujar(entorno);
+
+		for (int i = 0; i < obstaculo.length; i++) {
+			obstaculo[i].dibujar(entorno);
+		}
+
+		for (int i = 0; i < variosKyojins.length; i++) {
+			variosKyojins[i].dibujar(entorno);
+
+		}
+
+		variosKyojins[1].moverseHaciaMikasa();
+		variosKyojins[3].moverseHaciaMikasa();
+		variosKyojins[4].moverseHaciaMikasa();
+		variosKyojins[2].moverseHaciaMikasa();
+		variosKyojins[0].moverseHaciaMikasa();
+
 		kyojin.moverseHaciaMikasa();
 
 		if (entorno.estaPresionada('a')) {
@@ -42,29 +70,30 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (entorno.estaPresionada('w')) {
-			//mikasa.avanzar();
+			// mikasa.avanzar();
 			mikasa.caminarHaciaArriba();
 			// mikasa.acelerar(); SI USAMOS ACELERAR
 		}
-		
+
 		if (entorno.estaPresionada('s')) {
 			mikasa.caminarHaciaAbajo();
 		}
 
 		if (mikasa.chocasteConEntorno(entorno)) {
 			System.out.println("Choque");
-			mikasa.detener(); 
+			mikasa.detener();
 			// Pensar que hacer ante colisiones
 		}
 
-		if (mikasa.chocasteConObstaculo(obstaculo)) {
-			System.out.println("choque con obstaculo");
-		}
-		
+		/*
+		 * if (mikasa.chocasteConObstaculo(obstaculoooo)) {
+		 * System.out.println("choque con obstaculo"); }
+		 */
+
 		if (kyojin.chocasteConMikasa(mikasa)) {
 			System.out.println("choque con kyojin");
 		}
-		
+
 		if (kyojin.chocasteConEntorno(entorno)) {
 			kyojin.cambiarDeDireccion();
 		}

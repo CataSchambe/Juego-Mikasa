@@ -30,7 +30,7 @@ public class Mikasa {
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(img, this.x, this.y, 0, 0.3); 
+		e.dibujarImagen(img, this.x, this.y, 0, 0.3);
 	}
 
 	// cuidado! no usar setters
@@ -56,32 +56,28 @@ public class Mikasa {
 	public void girarIzquierda() {
 		x -= velocidad;
 	}
-	
+
 	public void caminarHaciaArriba() {
 		y--;
 	}
-	
+
 	public void caminarHaciaAbajo() {
 		y++;
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) {
-		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y > entorno.alto() - tamaño / 2; 
+		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
 
-	//public boolean chocasteConObstaculo(Obstaculo obstaculo) {
-
-	//}
-	
 	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
 		return x > obstaculo.getX() - obstaculo.getAncho() / 2 && x < obstaculo.getX() + obstaculo.getAncho() / 2
 				&& y + tamaño / 2 > obstaculo.getY() - obstaculo.getAlto() / 2;
 	}
-	
+
 	public void detener() {
-		
+
 	}
-	
+
 	public double getTamaño() {
 		return tamaño;
 	}

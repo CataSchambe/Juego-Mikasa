@@ -38,7 +38,7 @@ public class Kyojin {
 	}
 	
 	public boolean chocasteConEntorno(Entorno entorno) {
-		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2;
+		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y> entorno.alto()- tamaño /2;
 	}
 	
 	public void cambiarDeDireccion() {   
