@@ -46,6 +46,9 @@ public class Juego extends InterfaceJuego {
 
 		for (int i = 0; i < obstaculo.length; i++) {
 			obstaculo[i].dibujar(entorno);
+			if (obstaculo[i].chocasteConMikasa(mikasa)) {
+				System.out.println("choque con obstaculo"); 
+			}
 		}
 
 		for (int i = 0; i < variosKyojins.length; i++) {
@@ -84,11 +87,6 @@ public class Juego extends InterfaceJuego {
 			mikasa.detener();
 			// Pensar que hacer ante colisiones
 		}
-
-		/*
-		 * if (mikasa.chocasteConObstaculo(obstaculoooo)) {
-		 * System.out.println("choque con obstaculo"); }
-		 */
 
 		if (kyojin.chocasteConMikasa(mikasa)) {
 			System.out.println("choque con kyojin");

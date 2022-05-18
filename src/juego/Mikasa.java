@@ -33,17 +33,6 @@ public class Mikasa {
 		e.dibujarImagen(img, this.x, this.y, 0, 0.3);
 	}
 
-	// cuidado! no usar setters
-//	public void girar(double modificador) {
-//		angulo = angulo + modificador;
-//		if (angulo > Math.PI * 2) {
-//			angulo = angulo - Math.PI * 2;
-//		}
-//		if (angulo < 0) {
-//			angulo = angulo + Math.PI * 2;
-//		}
-//	}
-
 	public void avanzar() {
 		x = x + Math.cos(angulo) * 2;
 		y = y + Math.sin(angulo) * 2;
@@ -67,11 +56,6 @@ public class Mikasa {
 
 	public boolean chocasteConEntorno(Entorno entorno) {
 		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y > entorno.alto() - tamaño / 2;
-	}
-
-	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
-		return x > obstaculo.getX() - obstaculo.getAncho() / 2 && x < obstaculo.getX() + obstaculo.getAncho() / 2
-				&& y + tamaño / 2 > obstaculo.getY() - obstaculo.getAlto() / 2;
 	}
 
 	public void detener() {
