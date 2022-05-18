@@ -22,7 +22,7 @@ public class Kyojin {
 		this.y = y;
 		this.velocidad = velocidad;
 		this.angulo = -Math.PI / 4;
-		this.tamaño = 50;
+		this.tamaño = 100;
 		this.color = Color.BLUE;
 		this.img = Herramientas.cargarImagen("kyojin.png");
 	}
@@ -51,7 +51,7 @@ public class Kyojin {
 	
 	public boolean chocasteConMikasa(Mikasa mikasa) {
 		return x > mikasa.getX() - mikasa.getTamaño() / 2 && x < mikasa.getX() + mikasa.getTamaño() / 2
-				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2; //FIXME
+				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2 && y - tamaño / 2 < mikasa.getY() + mikasa.getTamaño() / 2;
 	}
 	
 	public double getTamaño() {
