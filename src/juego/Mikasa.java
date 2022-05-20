@@ -36,22 +36,15 @@ public class Mikasa {
 	public void avanzar() {
 		x = x + Math.cos(angulo) * 2;
 		y = y + Math.sin(angulo) * 2;
+		System.out.println(angulo);
 	}
 
 	public void girarDerecha() {
-		x += velocidad;
+		angulo = angulo + 1; // ejemplo para probar si funciona
 	}
 
 	public void girarIzquierda() {
-		x -= velocidad;
-	}
-
-	public void caminarHaciaArriba() {
-		y--;
-	}
-
-	public void caminarHaciaAbajo() {
-		y++;
+		angulo = angulo - 1;
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) {
