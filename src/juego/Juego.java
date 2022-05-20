@@ -16,6 +16,7 @@ public class Juego extends InterfaceJuego {
 	private Kyojin[] variosKyojins;
 
 	private Obstaculo[] obstaculo;
+	private Pocion[] pocion;
 	private Image fondo;
 
 	public Juego() {
@@ -27,7 +28,7 @@ public class Juego extends InterfaceJuego {
 		this.kyojin = new Kyojin(entorno.ancho() / 3, entorno.alto() / 3, 2);
 		variosKyojins = new Kyojin[5];
 		for (int i = 0; i < variosKyojins.length; i++) {
-			variosKyojins[i] = new Kyojin(Math.random() * entorno.ancho() / 3, entorno.alto() / 3, 2);
+			variosKyojins[i] = new Kyojin(Math.random() * entorno.ancho() - 15, entorno.alto() - 100, 2);
 		}
 
 		obstaculo = new Obstaculo[5];
@@ -37,6 +38,11 @@ public class Juego extends InterfaceJuego {
 		}
 		// this.obstaculo = new Obstaculo(Math.random() * (entorno.ancho() - 0) + 0,
 		// Math.random() * (entorno.alto() - 0));
+
+		pocion = new Pocion[7];
+		for (int i = 0; i < pocion.length; i++) {
+			pocion[i] = new Pocion(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
+		}
 
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
 
@@ -51,6 +57,13 @@ public class Juego extends InterfaceJuego {
 			obstaculo[i].dibujar(entorno);
 			if (obstaculo[i].chocasteConMikasa(mikasa)) {
 				System.out.println("choque con obstaculo");
+			}
+		}
+
+		for (int i = 0; i < pocion.length; i++) {
+			pocion[i].dibujar(entorno);
+			if (pocion[i].chocasteConMikasa(mikasa)) {
+				System.out.println("Mikasa tomo POCION");
 			}
 		}
 

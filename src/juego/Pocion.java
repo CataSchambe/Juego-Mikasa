@@ -6,45 +6,31 @@ import java.awt.Image;
 import entorno.Entorno;
 import entorno.Herramientas;
 
-public class Obstaculo {
+public class Pocion {
 	private double x;
 	private double y;
 	private double tamaño;
 
 	private Color color;
-	private Image imgEdificio;
-//	private Image imgArbol; 
-//	private Image imgSuero; 	
+	private Image imgPocion;
 
-	public Obstaculo(double x, double y) {
+	public Pocion(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.tamaño = 40;
-		this.color = Color.RED;
-		this.imgEdificio = Herramientas.cargarImagen("edificios.png"); // mikasa-derecha.png
+		this.tamaño = 0.5;
+		this.color = Color.YELLOW;
+		this.imgPocion = Herramientas.cargarImagen("pocion.png"); //
 	}
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(imgEdificio, x, y, 0, 0.2); // FIXME
+		e.dibujarImagen(imgPocion, x, y, 0, 0.04);
 	}
 
 	public boolean chocasteConMikasa(Mikasa mikasa) {
 		return x > mikasa.getX() - mikasa.getTamaño() / 2 && x < mikasa.getX() + mikasa.getTamaño() / 2
 				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2
 				&& y - tamaño / 2 < mikasa.getY() + mikasa.getTamaño() / 2;
-	}
-
-	public double getX() {
-		return x;
-	}
-
-	public double getY() {
-		return y;
-	}
-
-	public double getTamaño() {
-		return tamaño;
 	}
 
 }

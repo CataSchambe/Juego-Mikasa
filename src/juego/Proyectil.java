@@ -10,21 +10,21 @@ public class Proyectil {
 	private double velocidad;
 	private double angulo;
 	private Image img;
-	
-	public Proyectil (double x, double y) {
+
+	public Proyectil(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	// TODO
 	public void lanzarse() {
-		
+
 	}
-	
+
 	public void avanzar() {
-		
+
 	}
-	
+
 //	public boolean chocasteConObstaculo() {
 //		
 //	}
@@ -36,5 +36,5 @@ public class Proyectil {
 //	public boolean chocasteConEntorno() {
 //		
 //	}
-	
+
 }
