@@ -16,7 +16,7 @@ public class Juego extends InterfaceJuego {
 	private Kyojin[] variosKyojins;
 
 	private Obstaculo[] obstaculo;
-	private Pocion[] pocion;
+//	private Pocion[] pocion;
 	private Image fondo;
 
 	public Juego() {
@@ -39,10 +39,10 @@ public class Juego extends InterfaceJuego {
 		// this.obstaculo = new Obstaculo(Math.random() * (entorno.ancho() - 0) + 0,
 		// Math.random() * (entorno.alto() - 0));
 
-		pocion = new Pocion[7];
-		for (int i = 0; i < pocion.length; i++) {
-			pocion[i] = new Pocion(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
-		}
+//		pocion = new Pocion[7];
+//		for (int i = 0; i < pocion.length; i++) {
+//			pocion[i] = new Pocion(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
+//		}
 
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
 
@@ -60,12 +60,12 @@ public class Juego extends InterfaceJuego {
 			}
 		}
 
-		for (int i = 0; i < pocion.length; i++) {
-			pocion[i].dibujar(entorno);
-			if (pocion[i].chocasteConMikasa(mikasa)) {
-				System.out.println("Mikasa tomo POCION");
-			}
-		}
+//		for (int i = 0; i < pocion.length; i++) {
+//			pocion[i].dibujar(entorno);
+//			if (pocion[i].chocasteConMikasa(mikasa)) {
+//				System.out.println("Mikasa tomo POCION");
+//			}
+//		}
 
 		for (int i = 0; i < variosKyojins.length; i++) {
 			variosKyojins[i].dibujar(entorno);
@@ -85,17 +85,16 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (entorno.estaPresionada('w')) {
-			mikasa.avanzar();
-
-			if (mikasa.chocasteConEntorno(entorno)) {
-				System.out.println("Choque");
-				mikasa.detener();
-				// Pensar que hacer ante colisiones
+			if (mikasa.chocasteConEntorno(entorno) == false) {
+				mikasa.avanzar();
+			} else {
+				mikasa.retroceder();
+				System.out.println("choque con entorno/obstaculo");
 			}
+		}
 
-			if (kyojin.chocasteConMikasa(mikasa)) {
-				System.out.println("choque con kyojin");
-			}
+		if (kyojin.chocasteConMikasa(mikasa)) {
+			System.out.println("choque con kyojin");
 		}
 
 	}

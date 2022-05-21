@@ -30,29 +30,45 @@ public class Mikasa {
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(img, this.x, this.y, 0, 0.3);
+		e.dibujarImagen(img, this.x, this.y, angulo, 0.3);
 	}
 
 	public void avanzar() {
 		x = x + Math.cos(angulo) * 2;
 		y = y + Math.sin(angulo) * 2;
-		System.out.println(angulo);
+		System.out.println("Valor actual del ángulo: " + angulo); // para ir chequeando manualmente el angulo, cuando estemos seguros de que anda todo bien, borrar
+	}
+
+	public void retroceder() { // este método es para que si Mikasa choca con el entorno/obstaculo que
+								// retroceda un par de pixeles, sino se queda atrapada ya que en la clase juego
+								// no puede avanzar
+		x = x - Math.cos(angulo) * 2;
+		y = y - Math.sin(angulo) * 2;
 	}
 
 	public void girarDerecha() {
-		angulo = angulo + 1; // ejemplo para probar si funciona
+		angulo = angulo + Math.PI/45;
+		if (angulo > Math.PI * 2) {
+			angulo = angulo - Math.PI * 2;
+		}
+		if (angulo < 0) {
+			angulo = angulo + Math.PI * 2;
+		}
 	}
 
 	public void girarIzquierda() {
-		angulo = angulo - 1;
+		angulo = angulo - Math.PI/45;
+		if (angulo > Math.PI * 2) {
+			angulo = angulo - Math.PI * 2;
+		}
+		if (angulo < 0) {
+			angulo = angulo + Math.PI * 2;
+		}
 	}
 
-	public boolean chocasteConEntorno(Entorno entorno) {
-		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y > entorno.alto() - tamaño / 2;
-	}
-
-	public void detener() {
-
+	public boolean chocasteConEntorno(Entorno entorno) { // consultar si en ancho-ancho y alto-alto directamente se puede poner 0
+		return x < entorno.ancho() - entorno.ancho() + tamaño / 2 || x > entorno.ancho() - tamaño / 2 
+				|| y < entorno.alto() - entorno.alto() + tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
 
 	public double getTamaño() {
