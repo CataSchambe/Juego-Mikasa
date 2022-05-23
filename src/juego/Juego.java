@@ -12,11 +12,9 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
-//	private Kyojin kyojin;
 	private Kyojin[] variosKyojins;
 
 	private Obstaculo[] obstaculo;
-//	private Pocion[] pocion;
 	private Image fondo;
 
 	public Juego() {
@@ -25,9 +23,11 @@ public class Juego extends InterfaceJuego {
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 3, 0);
 
 		obstaculo = new Obstaculo[5];
+
+		// OSTACULOS RANDOM
 		for (int i = 0; i < obstaculo.length; i++) {
-			double xRandom = 50 + (Math.random() * (entorno.ancho() - 50));
-			double yRandom = 50 + (Math.random() * (entorno.alto() - 50));
+			double xRandom = Math.random() * ((entorno.ancho() - 50) - 50) + 50;
+			double yRandom = Math.random() * ((entorno.alto() - 50) - 50) + 50;
 			System.out.println("X: " + xRandom);
 			System.out.println("Y: " + yRandom);
 			obstaculo[i] = new Obstaculo(xRandom, yRandom); // por algún motivo, a veces se generan valores que exceden
@@ -39,10 +39,30 @@ public class Juego extends InterfaceJuego {
 			}
 		}
 
-//		this.kyojin = new Kyojin(entorno.ancho() / 3, entorno.alto() / 3, 2);
+		// OBSTACULOS FIJOS
+//		obstaculo[0] = new Obstaculo (x, y);
+//		obstaculo[1] = new Obstaculo (x, y);
+//		obstaculo[2] = new Obstaculo (x, y);
+//		obstaculo[3] = new Obstaculo (x, y);
+//		obstaculo[4] = new Obstaculo (x, y);
+
+//		GENERACION DE KYOJINES EN LA PANTALLA
 		variosKyojins = new Kyojin[5];
 		for (int i = 0; i < variosKyojins.length; i++) {
-			variosKyojins[i] = new Kyojin(Math.random() * entorno.ancho() - 15, entorno.alto() - 100, 2);
+			variosKyojins[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
+			
+			for (int j = 0; j < i; j++) {
+				if (variosKyojins[i].teGenerasteSobreOtroKyojin(variosKyojins[j])) {
+					// regenerarse
+				}
+			}
+			
+			for (int k = 0; k < obstaculo.length; k++) {
+				if (variosKyojins[i].teGenerasteSobreUnObstaculo(obstaculo[k])) {
+					// regenerarse
+				}
+			}
 		}
 
 //		pocion = new Pocion[7];
@@ -61,9 +81,9 @@ public class Juego extends InterfaceJuego {
 
 		for (int i = 0; i < obstaculo.length; i++) {
 			obstaculo[i].dibujar(entorno);
-			if (obstaculo[i].chocasteConMikasa(mikasa)) {
-				System.out.println("choque con obstaculo");
-			}
+//			if (obstaculo[i].chocasteConMikasa(mikasa)) {
+//				System.out.println("choque con obstaculo");
+//			}
 		}
 
 //		for (int i = 0; i < pocion.length; i++) {
