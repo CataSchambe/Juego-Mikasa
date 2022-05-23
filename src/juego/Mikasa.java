@@ -36,7 +36,8 @@ public class Mikasa {
 	public void avanzar() {
 		x = x + Math.cos(angulo) * 2;
 		y = y + Math.sin(angulo) * 2;
-		System.out.println("Valor actual del ángulo: " + angulo); // para ir chequeando manualmente el angulo, cuando estemos seguros de que anda todo bien, borrar
+		System.out.println("Valor actual del ángulo: " + angulo); // para ir chequeando manualmente el angulo, cuando
+																	// estemos seguros de que anda todo bien, borrar
 	}
 
 	public void retroceder() { // este método es para que si Mikasa choca con el entorno/obstaculo que
@@ -47,7 +48,7 @@ public class Mikasa {
 	}
 
 	public void girarDerecha() {
-		angulo = angulo + Math.PI/45;
+		angulo = angulo + Math.PI / 45;
 		if (angulo > Math.PI * 2) {
 			angulo = angulo - Math.PI * 2;
 		}
@@ -57,7 +58,7 @@ public class Mikasa {
 	}
 
 	public void girarIzquierda() {
-		angulo = angulo - Math.PI/45;
+		angulo = angulo - Math.PI / 45;
 		if (angulo > Math.PI * 2) {
 			angulo = angulo - Math.PI * 2;
 		}
@@ -66,8 +67,9 @@ public class Mikasa {
 		}
 	}
 
-	public boolean chocasteConEntorno(Entorno entorno) { // consultar si en ancho-ancho y alto-alto directamente se puede poner 0
-		return x < entorno.ancho() - entorno.ancho() + tamaño / 2 || x > entorno.ancho() - tamaño / 2 
+	public boolean chocasteConEntorno(Entorno entorno) { // consultar si en ancho-ancho y alto-alto directamente se
+															// puede poner 0
+		return x < entorno.ancho() - entorno.ancho() + tamaño / 2 || x > entorno.ancho() - tamaño / 2
 				|| y < entorno.alto() - entorno.alto() + tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
 

@@ -12,7 +12,7 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
-	private Kyojin kyojin;
+//	private Kyojin kyojin;
 	private Kyojin[] variosKyojins;
 
 	private Obstaculo[] obstaculo;
@@ -20,24 +20,30 @@ public class Juego extends InterfaceJuego {
 	private Image fondo;
 
 	public Juego() {
-		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 700);
-		// despues ponerlo en 800 x 600
+		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);
 
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 3, 0);
 
-		this.kyojin = new Kyojin(entorno.ancho() / 3, entorno.alto() / 3, 2);
+		obstaculo = new Obstaculo[5];
+		for (int i = 0; i < obstaculo.length; i++) {
+			double xRandom = 50 + (Math.random() * (entorno.ancho() - 50));
+			double yRandom = 50 + (Math.random() * (entorno.alto() - 50));
+			System.out.println("X: " + xRandom);
+			System.out.println("Y: " + yRandom);
+			obstaculo[i] = new Obstaculo(xRandom, yRandom); // por algún motivo, a veces se generan valores que exceden
+															// lo indicado en el random
+															// y debido a eso se generan obstaculos que quedan
+															// parcialmente fuera del entorno
+			if (obstaculo[i].teGenerasteSobreMikasa(mikasa)) {
+				// regenerarse
+			}
+		}
+
+//		this.kyojin = new Kyojin(entorno.ancho() / 3, entorno.alto() / 3, 2);
 		variosKyojins = new Kyojin[5];
 		for (int i = 0; i < variosKyojins.length; i++) {
 			variosKyojins[i] = new Kyojin(Math.random() * entorno.ancho() - 15, entorno.alto() - 100, 2);
 		}
-
-		obstaculo = new Obstaculo[5];
-		for (int i = 0; i < obstaculo.length; i++) {
-			obstaculo[i] = new Obstaculo(Math.random() * (entorno.ancho() - 0) + 0,
-					(Math.random() * (entorno.alto() - 0)));
-		}
-		// this.obstaculo = new Obstaculo(Math.random() * (entorno.ancho() - 0) + 0,
-		// Math.random() * (entorno.alto() - 0));
 
 //		pocion = new Pocion[7];
 //		for (int i = 0; i < pocion.length; i++) {
@@ -93,9 +99,9 @@ public class Juego extends InterfaceJuego {
 			}
 		}
 
-		if (kyojin.chocasteConMikasa(mikasa)) {
-			System.out.println("choque con kyojin");
-		}
+//		if (kyojin.chocasteConMikasa(mikasa)) {
+//			System.out.println("choque con kyojin");
+//		}
 
 	}
 
