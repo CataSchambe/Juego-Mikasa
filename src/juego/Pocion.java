@@ -9,7 +9,7 @@ import entorno.Herramientas;
 public class Pocion {
 	private double x;
 	private double y;
-	private double tamaño;
+	private double tamaÃ±o;
 
 	private Color color;
 	private Image imgPocion;
@@ -17,20 +17,21 @@ public class Pocion {
 	public Pocion(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.tamaño = 0.5;
+		this.tamaÃ±o = 0.5;
 		this.color = Color.YELLOW;
 		this.imgPocion = Herramientas.cargarImagen("pocion.png"); //
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarCirculo(x, y, tamaño, color);
+		e.dibujarCirculo(x, y, tamaÃ±o, color);
 		e.dibujarImagen(imgPocion, x, y, 0, 0.04);
 	}
 
+	// no lo compro
 	public boolean chocasteConMikasa(Mikasa mikasa) {
-		return x > mikasa.getX() - mikasa.getTamaño() / 2 && x < mikasa.getX() + mikasa.getTamaño() / 2
-				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2
-				&& y - tamaño / 2 < mikasa.getY() + mikasa.getTamaño() / 2;
+		return x > mikasa.getX() - mikasa.getTamaÃ±o() / 2 && x < mikasa.getX() + mikasa.getTamaÃ±o() / 2
+				&& y + tamaÃ±o / 2 > mikasa.getY() - mikasa.getTamaÃ±o() / 2
+				&& y - tamaÃ±o / 2 < mikasa.getY() + mikasa.getTamaÃ±o() / 2;
 	}
 
 }

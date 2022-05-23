@@ -3,8 +3,10 @@ package juego;
 import java.awt.Image;
 
 public class Proyectil {
+	
 	private double x;
 	private double y;
+	
 	private double ancho;
 	private double alto;
 	private double velocidad;

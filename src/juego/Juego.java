@@ -14,7 +14,7 @@ public class Juego extends InterfaceJuego {
 	private Mikasa mikasa;
 	private Kyojin[] variosKyojins;
 
-	private Obstaculo[] obstaculo;
+	private Obstaculo[] obstaculo; // obstaculos
 	private Image fondo;
 
 	public Juego() {
@@ -30,7 +30,7 @@ public class Juego extends InterfaceJuego {
 			double yRandom = Math.random() * ((entorno.alto() - 50) - 50) + 50;
 			System.out.println("X: " + xRandom);
 			System.out.println("Y: " + yRandom);
-			obstaculo[i] = new Obstaculo(xRandom, yRandom); // por algún motivo, a veces se generan valores que exceden
+			obstaculo[i] = new Obstaculo(xRandom, yRandom); // por algï¿½n motivo, a veces se generan valores que exceden
 															// lo indicado en el random
 															// y debido a eso se generan obstaculos que quedan
 															// parcialmente fuera del entorno
@@ -79,6 +79,10 @@ public class Juego extends InterfaceJuego {
 		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 		mikasa.dibujar(entorno);
 
+//		for (Obstaculo o : obstaculos) {
+//			o.dibujar(entorno);
+//		}
+		
 		for (int i = 0; i < obstaculo.length; i++) {
 			obstaculo[i].dibujar(entorno);
 //			if (obstaculo[i].chocasteConMikasa(mikasa)) {
@@ -93,13 +97,13 @@ public class Juego extends InterfaceJuego {
 //			}
 //		}
 
+		// foreach
 		for (int i = 0; i < variosKyojins.length; i++) {
 			variosKyojins[i].dibujar(entorno);
 			variosKyojins[i].moverseHaciaMikasa();
 			if (variosKyojins[i].chocasteConEntorno(entorno)) {
 				variosKyojins[i].cambiarDeDireccion();
 			}
-
 		}
 
 		if (entorno.estaPresionada('a')) {

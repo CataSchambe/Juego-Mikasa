@@ -13,7 +13,7 @@ public class Mikasa {
 	private double velocidad;
 	private double angulo;
 
-	private double tamaño;
+	private double tamaÃ±o;
 	private Image img;
 	private Color color; // esto es solo para el rectangulo que despues se termina ocultando, asi que da
 							// igual el color
@@ -23,58 +23,59 @@ public class Mikasa {
 		this.y = y;
 		this.velocidad = velocidad;
 		this.angulo = angulo;
-		this.tamaño = 50;
+		this.tamaÃ±o = 100;
 		this.color = Color.YELLOW;
 		this.img = Herramientas.cargarImagen("mikasa.png");
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarCirculo(x, y, tamaño, color);
+		e.dibujarCirculo(x, y, tamaÃ±o, color);
 		e.dibujarImagen(img, this.x, this.y, angulo, 0.3);
 	}
 
 	public void avanzar() {
 		x = x + Math.cos(angulo) * 2;
 		y = y + Math.sin(angulo) * 2;
-		System.out.println("Valor actual del ángulo: " + angulo); // para ir chequeando manualmente el angulo, cuando
+		System.out.println("Valor actual del Ã¡ngulo: " + angulo); // para ir chequeando manualmente el angulo, cuando
 																	// estemos seguros de que anda todo bien, borrar
 	}
 
-	public void retroceder() { // este método es para que si Mikasa choca con el entorno/obstaculo que
-								// retroceda un par de pixeles, sino se queda atrapada ya que en la clase juego
-								// no puede avanzar
+	// este mÃ©todo es para que si Mikasa choca con el entorno/obstaculo que
+	// retroceda un par de pixeles, sino se queda atrapada ya que en la clase juego
+	// no puede avanzar
+	public void retroceder() {
 		x = x - Math.cos(angulo) * 2;
 		y = y - Math.sin(angulo) * 2;
 	}
 
 	public void girarDerecha() {
-		angulo = angulo + Math.PI / 45;
-		if (angulo > Math.PI * 2) {
-			angulo = angulo - Math.PI * 2;
-		}
-		if (angulo < 0) {
-			angulo = angulo + Math.PI * 2;
-		}
+		angulo += 0.05;
+//		if (angulo > Math.PI * 2) {
+//			angulo = angulo - Math.PI * 2;
+//		}
+//		if (angulo < 0) {
+//			angulo = angulo + Math.PI * 2;
+//		}
 	}
 
 	public void girarIzquierda() {
-		angulo = angulo - Math.PI / 45;
-		if (angulo > Math.PI * 2) {
-			angulo = angulo - Math.PI * 2;
-		}
-		if (angulo < 0) {
-			angulo = angulo + Math.PI * 2;
-		}
+		angulo -= 0.05;
+//		if (angulo > Math.PI * 2) {
+//			angulo = angulo - Math.PI * 2;
+//		}
+//		if (angulo < 0) {
+//			angulo = angulo + Math.PI * 2;
+//		}
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) { // consultar si en ancho-ancho y alto-alto directamente se
 															// puede poner 0
-		return x < entorno.ancho() - entorno.ancho() + tamaño / 2 || x > entorno.ancho() - tamaño / 2
-				|| y < entorno.alto() - entorno.alto() + tamaño / 2 || y > entorno.alto() - tamaño / 2;
+		return x < entorno.ancho() - entorno.ancho() + tamaÃ±o / 2 || x > entorno.ancho() - tamaÃ±o / 2
+				|| y < entorno.alto() - entorno.alto() + tamaÃ±o / 2 || y > entorno.alto() - tamaÃ±o / 2;
 	}
 
-	public double getTamaño() {
-		return tamaño;
+	public double getTamaÃ±o() {
+		return tamaÃ±o;
 	}
 
 	public double getX() {

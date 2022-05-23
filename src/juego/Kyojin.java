@@ -13,7 +13,7 @@ public class Kyojin {
 
 	private double velocidad;
 	private double angulo;
-	private double tamaño;
+	private double tamaÃ±o;
 	private Color color;
 	private Image img;
 
@@ -22,25 +22,29 @@ public class Kyojin {
 		this.y = y;
 		this.velocidad = velocidad;
 		this.angulo = -Math.PI / 4;
-		this.tamaño = 50;
+		this.tamaÃ±o = 50;
 		this.color = Color.BLUE;
 		this.img = Herramientas.cargarImagen("kyojin.png");
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarCirculo(x, y, tamaño, color);
+		e.dibujarCirculo(x, y, tamaÃ±o, color);
 //		e.dibujarImagen(img, this.x, this.y, 0, 0.10);
 	}
 
-	public boolean teGenerasteSobreOtroKyojin(Kyojin kyojin) {
+	public boolean teGenerasteSobreOtroKyojin(Kyojin kyojin) { //chocasteConOtro()
 		return Math.sqrt(
-				(x - kyojin.getX()) * (x - kyojin.getX()) + (y - kyojin.getY()) * (y - kyojin.getY())) > tamaño / 2
-						+ kyojin.getTamaño() / 2;
+				(x - kyojin.getX()) * (x - kyojin.getX()) + (y - kyojin.getY()) * (y - kyojin.getY())) > tamaÃ±o / 2
+						+ kyojin.getTamaÃ±o() / 2;
+	}
+	
+	public boolean chocasteConAlgunOtro(Kyojin[] kyojines) {
+		return false;
 	}
 
 	public boolean teGenerasteSobreUnObstaculo(Obstaculo obstaculo) {
 		return Math.sqrt((x - obstaculo.getX()) * (x - obstaculo.getX())
-				+ (y - obstaculo.getY()) * (y - obstaculo.getY())) > tamaño / 2 + obstaculo.getTamaño() / 2;
+				+ (y - obstaculo.getY()) * (y - obstaculo.getY())) > tamaÃ±o / 2 + obstaculo.getTamaÃ±o() / 2;
 	}
 
 	public void moverseHaciaMikasa() {
@@ -49,7 +53,7 @@ public class Kyojin {
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) {
-		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y > entorno.alto() - tamaño / 2;
+		return x < tamaÃ±o / 2 || x > entorno.ancho() - tamaÃ±o / 2 || y < tamaÃ±o / 2 || y > entorno.alto() - tamaÃ±o / 2;
 	}
 
 	public void cambiarDeDireccion() {
@@ -61,9 +65,9 @@ public class Kyojin {
 //	}
 
 	public boolean chocasteConMikasa(Mikasa mikasa) {
-		return x > mikasa.getX() - mikasa.getTamaño() / 2 && x < mikasa.getX() + mikasa.getTamaño() / 2
-				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2
-				&& y - tamaño / 2 < mikasa.getY() + mikasa.getTamaño() / 2;
+		return x > mikasa.getX() - mikasa.getTamaÃ±o() / 2 && x < mikasa.getX() + mikasa.getTamaÃ±o() / 2
+				&& y + tamaÃ±o / 2 > mikasa.getY() - mikasa.getTamaÃ±o() / 2
+				&& y - tamaÃ±o / 2 < mikasa.getY() + mikasa.getTamaÃ±o() / 2;
 	}
 
 	public double getX() {
@@ -74,7 +78,7 @@ public class Kyojin {
 		return y;
 	}
 
-	public double getTamaño() {
-		return tamaño;
+	public double getTamaÃ±o() {
+		return tamaÃ±o;
 	}
 }
