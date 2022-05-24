@@ -25,7 +25,7 @@ public class Mikasa {
 		this.angulo = angulo;
 		this.tamaño = 100;
 		this.color = Color.YELLOW;
-		this.img = Herramientas.cargarImagen("mikasa.png");
+		this.img = Herramientas.cargarImagen("mikasa-flecha.png");
 	}
 
 	public void dibujar(Entorno e) {
@@ -36,8 +36,6 @@ public class Mikasa {
 	public void avanzar() {
 		x = x + Math.cos(angulo) * 2;
 		y = y + Math.sin(angulo) * 2;
-		System.out.println("Valor actual del ángulo: " + angulo); // para ir chequeando manualmente el angulo, cuando
-																	// estemos seguros de que anda todo bien, borrar
 	}
 
 	// este método es para que si Mikasa choca con el entorno/obstaculo que

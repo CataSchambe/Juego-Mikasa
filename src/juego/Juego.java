@@ -30,7 +30,7 @@ public class Juego extends InterfaceJuego {
 			double yRandom = Math.random() * ((entorno.alto() - 50) - 50) + 50;
 			System.out.println("X: " + xRandom);
 			System.out.println("Y: " + yRandom);
-			obstaculo[i] = new Obstaculo(xRandom, yRandom); // por alg�n motivo, a veces se generan valores que exceden
+			obstaculo[i] = new Obstaculo(xRandom, yRandom); // por algun motivo, a veces se generan valores que exceden
 															// lo indicado en el random
 															// y debido a eso se generan obstaculos que quedan
 															// parcialmente fuera del entorno
