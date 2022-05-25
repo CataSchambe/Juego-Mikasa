@@ -48,28 +48,21 @@ public class Mikasa {
 
 	public void girarDerecha() {
 		angulo += 0.05;
-//		if (angulo > Math.PI * 2) {
-//			angulo = angulo - Math.PI * 2;
-//		}
-//		if (angulo < 0) {
-//			angulo = angulo + Math.PI * 2;
-//		}
 	}
 
 	public void girarIzquierda() {
 		angulo -= 0.05;
-//		if (angulo > Math.PI * 2) {
-//			angulo = angulo - Math.PI * 2;
-//		}
-//		if (angulo < 0) {
-//			angulo = angulo + Math.PI * 2;
-//		}
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) { // consultar si en ancho-ancho y alto-alto directamente se
 															// puede poner 0
 		return x < entorno.ancho() - entorno.ancho() + tamaño / 2 || x > entorno.ancho() - tamaño / 2
 				|| y < entorno.alto() - entorno.alto() + tamaño / 2 || y > entorno.alto() - tamaño / 2;
+	}
+	
+	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
+		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) 
+				< tamaño / 2 + obstaculo.getTamaño() / 2;
 	}
 
 	public double getTamaño() {

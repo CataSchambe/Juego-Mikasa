@@ -6,7 +6,7 @@ import java.awt.Image;
 import entorno.Entorno;
 import entorno.Herramientas;
 
-public class Pocion {
+public class Suero {
 	private double x;
 	private double y;
 	private double tamaño;
@@ -14,7 +14,7 @@ public class Pocion {
 	private Color color;
 	private Image imgPocion;
 
-	public Pocion(double x, double y) {
+	public Suero(double x, double y) {
 		this.x = x;
 		this.y = y;
 		this.tamaño = 0.5;

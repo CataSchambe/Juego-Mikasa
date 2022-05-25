@@ -12,9 +12,9 @@ public class Juego extends InterfaceJuego {
 	private Entorno entorno;
 
 	private Mikasa mikasa;
-	private Kyojin[] variosKyojins;
+	private Kyojin[] kyojines;
 
-	private Obstaculo[] obstaculo; // obstaculos
+	private Obstaculo[] obstaculos;
 	private Image fondo;
 
 	public Juego() {
@@ -22,53 +22,39 @@ public class Juego extends InterfaceJuego {
 
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 3, 0);
 
-		obstaculo = new Obstaculo[5];
+		// generación de obstaculos (fijos)
+		obstaculos = new Obstaculo[5];
 
-		// OSTACULOS RANDOM
-		for (int i = 0; i < obstaculo.length; i++) {
-			double xRandom = Math.random() * ((entorno.ancho() - 50) - 50) + 50;
-			double yRandom = Math.random() * ((entorno.alto() - 50) - 50) + 50;
-			System.out.println("X: " + xRandom);
-			System.out.println("Y: " + yRandom);
-			obstaculo[i] = new Obstaculo(xRandom, yRandom); // por algun motivo, a veces se generan valores que exceden
-															// lo indicado en el random
-															// y debido a eso se generan obstaculos que quedan
-															// parcialmente fuera del entorno
-			if (obstaculo[i].teGenerasteSobreMikasa(mikasa)) {
-				// regenerarse
-			}
-		}
+		obstaculos[0] = new Obstaculo (115, 397);
+		obstaculos[1] = new Obstaculo (427, 121);
+		obstaculos[2] = new Obstaculo (700, 520);
+		obstaculos[3] = new Obstaculo (178, 106);
+		obstaculos[4] = new Obstaculo (625, 319);
+		
 
-		// OBSTACULOS FIJOS
-//		obstaculo[0] = new Obstaculo (x, y);
-//		obstaculo[1] = new Obstaculo (x, y);
-//		obstaculo[2] = new Obstaculo (x, y);
-//		obstaculo[3] = new Obstaculo (x, y);
-//		obstaculo[4] = new Obstaculo (x, y);
-
-//		GENERACION DE KYOJINES EN LA PANTALLA
-		variosKyojins = new Kyojin[5];
-		for (int i = 0; i < variosKyojins.length; i++) {
-			variosKyojins[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+//		generación de kyojines en la pantalla
+		kyojines = new Kyojin[5];
+		for (int i = 0; i < kyojines.length; i++) {
+			kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
 					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
 			
+			// para evitar que dos kyojines se generen en el mismo lugar
 			for (int j = 0; j < i; j++) {
-				if (variosKyojins[i].teGenerasteSobreOtroKyojin(variosKyojins[j])) {
-					// regenerarse
+				if (kyojines[i].chocasteConAlgunOtro(kyojines[j])) {
+					kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
 				}
 			}
 			
-			for (int k = 0; k < obstaculo.length; k++) {
-				if (variosKyojins[i].teGenerasteSobreUnObstaculo(obstaculo[k])) {
-					// regenerarse
+			// para evitar que un kyojin se genere encima de un obstaculo
+			for (int k = 0; k < obstaculos.length; k++) {
+				if (kyojines[i].chocasteConUnObstaculo(obstaculos[k])) {
+					kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
 				}
 			}
 		}
 
-//		pocion = new Pocion[7];
-//		for (int i = 0; i < pocion.length; i++) {
-//			pocion[i] = new Pocion(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
-//		}
 
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
 
@@ -79,16 +65,10 @@ public class Juego extends InterfaceJuego {
 		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 		mikasa.dibujar(entorno);
 
-//		for (Obstaculo o : obstaculos) {
-//			o.dibujar(entorno);
-//		}
-		
-		for (int i = 0; i < obstaculo.length; i++) {
-			obstaculo[i].dibujar(entorno);
-//			if (obstaculo[i].chocasteConMikasa(mikasa)) {
-//				System.out.println("choque con obstaculo");
-//			}
+		for (Obstaculo o : obstaculos) {
+			o.dibujar(entorno);
 		}
+		
 
 //		for (int i = 0; i < pocion.length; i++) {
 //			pocion[i].dibujar(entorno);
@@ -98,11 +78,16 @@ public class Juego extends InterfaceJuego {
 //		}
 
 		// foreach
-		for (int i = 0; i < variosKyojins.length; i++) {
-			variosKyojins[i].dibujar(entorno);
-			variosKyojins[i].moverseHaciaMikasa();
-			if (variosKyojins[i].chocasteConEntorno(entorno)) {
-				variosKyojins[i].cambiarDeDireccion();
+		for (int i = 0; i < kyojines.length; i++) {
+			kyojines[i].dibujar(entorno);
+			kyojines[i].moverseHaciaMikasa();
+			if (kyojines[i].chocasteConEntorno(entorno)) {
+				kyojines[i].cambiarDeDireccion();
+			}
+			for (int j = 0; j < obstaculos.length; j++) {
+				if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])) {
+					kyojines[i].cambiarDeDireccion();
+				}
 			}
 		}
 

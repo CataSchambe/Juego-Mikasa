@@ -28,11 +28,6 @@ public class Obstaculo {
 //		e.dibujarImagen(imgEdificio, x, y, 0, 0.2); // FIXME
 	}
 
-	// no lo compro
-	public boolean teGenerasteSobreMikasa(Mikasa mikasa) {
-		return Math.sqrt((x - mikasa.getX()) * (x - mikasa.getX()) + (y - mikasa.getY()) * (y - mikasa.getY())) > tamaño
-				/ 2 + mikasa.getTamaño() / 2;
-	}
 
 //	public boolean teGenerasteSobreOtroObstaculo(Obstaculo obstaculo) {
 //		
