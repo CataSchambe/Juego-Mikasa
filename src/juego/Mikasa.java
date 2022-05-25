@@ -23,7 +23,7 @@ public class Mikasa {
 		this.y = y;
 		this.velocidad = velocidad;
 		this.angulo = angulo;
-		this.tamaño = 100;
+		this.tamaño = 30;
 		this.color = Color.YELLOW;
 		this.img = Herramientas.cargarImagen("mikasa-flecha.png");
 	}
@@ -48,10 +48,12 @@ public class Mikasa {
 
 	public void girarDerecha() {
 		angulo += 0.05;
+//		System.out.println("angulo: " + angulo);
 	}
 
 	public void girarIzquierda() {
 		angulo -= 0.05;
+//		System.out.println("angulo: " + angulo);
 	}
 
 	public boolean chocasteConEntorno(Entorno entorno) { // consultar si en ancho-ancho y alto-alto directamente se

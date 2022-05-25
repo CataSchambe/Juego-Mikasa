@@ -27,11 +27,4 @@ public class Suero {
 		e.dibujarImagen(imgPocion, x, y, 0, 0.04);
 	}
 
-	// no lo compro
-	public boolean chocasteConMikasa(Mikasa mikasa) {
-		return x > mikasa.getX() - mikasa.getTamaño() / 2 && x < mikasa.getX() + mikasa.getTamaño() / 2
-				&& y + tamaño / 2 > mikasa.getY() - mikasa.getTamaño() / 2
-				&& y - tamaño / 2 < mikasa.getY() + mikasa.getTamaño() / 2;
-	}
-
 }

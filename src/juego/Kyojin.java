@@ -21,7 +21,7 @@ public class Kyojin {
 		this.x = x;
 		this.y = y;
 		this.velocidad = velocidad;
-		this.angulo = -Math.PI / 4;
+		this.angulo = 0;
 		this.tamaño = 50;
 		this.color = Color.BLUE;
 		this.img = Herramientas.cargarImagen("kyojin.png");

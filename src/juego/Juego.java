@@ -38,6 +38,12 @@ public class Juego extends InterfaceJuego {
 			kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
 					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
 			
+			// para evitar que un kyojin se genere de entrada en la ubicacion de Mikasa
+			if (kyojines[i].chocasteConMikasa(mikasa)) {
+				kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+						(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
+			}
+			
 			// para evitar que dos kyojines se generen en el mismo lugar
 			for (int j = 0; j < i; j++) {
 				if (kyojines[i].chocasteConAlgunOtro(kyojines[j])) {
@@ -54,7 +60,7 @@ public class Juego extends InterfaceJuego {
 				}
 			}
 		}
-
+		
 
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
 
@@ -69,24 +75,26 @@ public class Juego extends InterfaceJuego {
 			o.dibujar(entorno);
 		}
 		
-
-//		for (int i = 0; i < pocion.length; i++) {
-//			pocion[i].dibujar(entorno);
-//			if (pocion[i].chocasteConMikasa(mikasa)) {
-//				System.out.println("Mikasa tomo POCION");
-//			}
-//		}
-
-		// foreach
-		for (int i = 0; i < kyojines.length; i++) {
-			kyojines[i].dibujar(entorno);
-			kyojines[i].moverseHaciaMikasa();
-			if (kyojines[i].chocasteConEntorno(entorno)) {
-				kyojines[i].cambiarDeDireccion();
+		
+		for (Kyojin k : kyojines) {
+			k.dibujar(entorno);
+			k.moverseHaciaMikasa();
+			if (k.chocasteConEntorno(entorno)) {
+				k.cambiarDeDireccion();
 			}
-			for (int j = 0; j < obstaculos.length; j++) {
-				if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])) {
+			for (Obstaculo o : obstaculos) {
+				if (k.chocasteConUnObstaculo(o)) {
+					k.cambiarDeDireccion();
+				}
+			}
+		}
+		
+		// choque entre kyojines, esto no se puede meter en el foreach porque cada kyojin se compara con si mismo
+		for (int i = 0; i < kyojines.length; i++) {
+			for (int j = 0; j < i; j++) {
+				if (kyojines[i].chocasteConAlgunOtro(kyojines[j])) {
 					kyojines[i].cambiarDeDireccion();
+					kyojines[j].cambiarDeDireccion();
 				}
 			}
 		}
@@ -108,9 +116,6 @@ public class Juego extends InterfaceJuego {
 			}
 		}
 
-//		if (kyojin.chocasteConMikasa(mikasa)) {
-//			System.out.println("choque con kyojin");
-//		}
 
 	}
 
