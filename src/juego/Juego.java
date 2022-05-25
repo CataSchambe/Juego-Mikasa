@@ -36,7 +36,7 @@ public class Juego extends InterfaceJuego {
 		kyojines = new Kyojin[5];
 		for (int i = 0; i < kyojines.length; i++) {
 			kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
-					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
+					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.25);
 			
 			// para evitar que un kyojin se genere de entrada en la ubicacion de Mikasa
 			if (kyojines[i].chocasteConMikasa(mikasa)) {
@@ -78,7 +78,7 @@ public class Juego extends InterfaceJuego {
 		
 		for (Kyojin k : kyojines) {
 			k.dibujar(entorno);
-			k.moverseHaciaMikasa();
+			k.moverseHaciaMikasa(mikasa);
 			if (k.chocasteConEntorno(entorno)) {
 				k.cambiarDeDireccion();
 			}
@@ -88,7 +88,7 @@ public class Juego extends InterfaceJuego {
 				}
 			}
 		}
-		
+
 		// choque entre kyojines, esto no se puede meter en el foreach porque cada kyojin se compara con si mismo
 		for (int i = 0; i < kyojines.length; i++) {
 			for (int j = 0; j < i; j++) {
@@ -108,15 +108,20 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (entorno.estaPresionada('w')) {
-			if (mikasa.chocasteConEntorno(entorno) == false) {
+			if (! mikasa.chocasteConEntorno(entorno)) {
 				mikasa.avanzar();
 			} else {
 				mikasa.retroceder();
 				System.out.println("choque con entorno/obstaculo");
 			}
 		}
-
-
+		
+		if(entorno.sePresiono(entorno.TECLA_ESPACIO)) {
+			Proyectil proyectil = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo(), 3);
+			proyectil.dibujar(entorno);
+			proyectil.avanzar();
+		}
+	
 	}
 
 	@SuppressWarnings("unused")

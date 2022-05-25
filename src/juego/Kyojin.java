@@ -31,43 +31,55 @@ public class Kyojin {
 		e.dibujarCirculo(x, y, tamaño, color);
 //		e.dibujarImagen(img, this.x, this.y, 0, 0.10);
 	}
-	
-	public void moverseHaciaMikasa() {
-		x += velocidad * Math.cos(angulo); // prueba del pong
-		y += velocidad * Math.sin(angulo);
+
+	public void moverseHaciaMikasa(Mikasa mikasa) {
+		// x += velocidad * Math.cos(angulo); // prueba del pong
+		// y += velocidad * Math.sin(angulo);
+
+		if (x < mikasa.getX() && y < mikasa.getY()) {
+			x += velocidad;
+			y += velocidad;
+		}
+		if (x > mikasa.getX() && y > mikasa.getY()) {
+			x -= velocidad;
+			y -= velocidad;
+		}
+		if (x < mikasa.getX() && y > mikasa.getY()) {
+			x += velocidad;
+			y -= velocidad;
+		}
+		if (x > mikasa.getX() && y < mikasa.getY()) {
+			x -= velocidad;
+			y += velocidad;
+		}
 	}
-	
 
 	// colisiones entre círculos:
-	// ocurren cuando la distancia entre ambos centros (teorema Pitagoras) es menor que la suma de ambos radios (tamaño/2)
-	public boolean chocasteConAlgunOtro(Kyojin kyojin) { //chocasteConOtro()
-		return Math.sqrt(Math.pow(x - kyojin.getX(), 2) + Math.pow(y - kyojin.getY(), 2)) 
-				< tamaño / 2 + kyojin.getTamaño() / 2;
+	// ocurren cuando la distancia entre ambos centros (teorema Pitagoras) es menor
+	// que la suma de ambos radios (tamaño/2)
+	public boolean chocasteConAlgunOtro(Kyojin kyojin) { // chocasteConOtro()
+		return Math.sqrt(Math.pow(x - kyojin.getX(), 2) + Math.pow(y - kyojin.getY(), 2)) < tamaño / 2
+				+ kyojin.getTamaño() / 2;
 	}
-	
 
 	public boolean chocasteConUnObstaculo(Obstaculo obstaculo) {
-		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) 
-				< tamaño / 2 + obstaculo.getTamaño() / 2;
-	}
-	
-	
-	public boolean chocasteConMikasa(Mikasa mikasa) {
-		return Math.sqrt(Math.pow(x - mikasa.getX(), 2) + Math.pow(y - mikasa.getY(), 2)) 
-				< tamaño / 2 + mikasa.getTamaño() / 2;
+		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
+				+ obstaculo.getTamaño() / 2;
 	}
 
-	
+	public boolean chocasteConMikasa(Mikasa mikasa) {
+		return Math.sqrt(Math.pow(x - mikasa.getX(), 2) + Math.pow(y - mikasa.getY(), 2)) < tamaño / 2
+				+ mikasa.getTamaño() / 2;
+	}
+
 	public boolean chocasteConEntorno(Entorno entorno) {
 		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
-	
-	
+
 	public void cambiarDeDireccion() {
 		angulo += Math.PI / 2; // todavia hay que ver que hace si sale del entorno
 	}
 
-	
 	public double getX() {
 		return x;
 	}

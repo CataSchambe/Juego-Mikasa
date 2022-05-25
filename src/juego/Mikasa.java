@@ -23,7 +23,7 @@ public class Mikasa {
 		this.y = y;
 		this.velocidad = velocidad;
 		this.angulo = angulo;
-		this.tamaño = 30;
+		this.tamaño = 50;
 		this.color = Color.YELLOW;
 		this.img = Herramientas.cargarImagen("mikasa-flecha.png");
 	}
@@ -66,9 +66,14 @@ public class Mikasa {
 		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) 
 				< tamaño / 2 + obstaculo.getTamaño() / 2;
 	}
+	
 
 	public double getTamaño() {
 		return tamaño;
+	}
+	
+	public double getAngulo() {
+		return angulo;
 	}
 
 	public double getX() {
