@@ -29,7 +29,7 @@ public class Proyectil {
 	
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(img, x, y, angulo);
+		e.dibujarImagen(img, x, y, angulo, 0.2);;
 	}
 
 	public void avanzar() {
@@ -37,9 +37,14 @@ public class Proyectil {
 		y = y + Math.sin(angulo) * 2;
 	}
 
-//	public boolean chocasteConObstaculo() {
-//		
-//	}
+	public boolean chocasteCon(Entorno entorno) {
+		return x + tamaño > entorno.ancho()|| x - tamaño < 0 || y + tamaño > entorno.alto() || y - tamaño < 0;
+	}
+
+	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
+		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) 
+				< tamaño / 2 + obstaculo.getTamaño() / 2;
+	}
 //	
 //	public boolean chocasteConKyojin() {
 //		

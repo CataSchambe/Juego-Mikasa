@@ -84,4 +84,8 @@ public class Mikasa {
 		return y;
 	}
 
+	public Proyectil crarProyectil() {
+return new Proyectil (x,y,angulo,velocidad);		
+	}
+
 }

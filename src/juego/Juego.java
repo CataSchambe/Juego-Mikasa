@@ -16,6 +16,7 @@ public class Juego extends InterfaceJuego {
 
 	private Obstaculo[] obstaculos;
 	private Image fondo;
+	private Proyectil proyectil;
 
 	public Juego() {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);
@@ -25,42 +26,41 @@ public class Juego extends InterfaceJuego {
 		// generaciÃ³n de obstaculos (fijos)
 		obstaculos = new Obstaculo[5];
 
-		obstaculos[0] = new Obstaculo (115, 397);
-		obstaculos[1] = new Obstaculo (427, 121);
-		obstaculos[2] = new Obstaculo (700, 520);
-		obstaculos[3] = new Obstaculo (178, 106);
-		obstaculos[4] = new Obstaculo (625, 319);
-		
+		obstaculos[0] = new Obstaculo(115, 397);
+		obstaculos[1] = new Obstaculo(427, 121);
+		obstaculos[2] = new Obstaculo(700, 520);
+		obstaculos[3] = new Obstaculo(178, 106);
+		obstaculos[4] = new Obstaculo(625, 319);
 
 //		generaciÃ³n de kyojines en la pantalla
 		kyojines = new Kyojin[5];
 		for (int i = 0; i < kyojines.length; i++) {
-			kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+			kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
 					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.25);
-			
+
 			// para evitar que un kyojin se genere de entrada en la ubicacion de Mikasa
-			if (kyojines[i].chocasteConMikasa(mikasa)) {
-				kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+			if (kyojines[i].chocasteConMikasa(mikasa)) {// hacer abajo pero si chocan matar mikasa//termina
+				kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
 						(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
 			}
-			
+
 			// para evitar que dos kyojines se generen en el mismo lugar
 			for (int j = 0; j < i; j++) {
 				if (kyojines[i].chocasteConAlgunOtro(kyojines[j])) {
-					kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+					kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
 							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
+					// cambiar de direccion;
 				}
 			}
-			
+
 			// para evitar que un kyojin se genere encima de un obstaculo
 			for (int k = 0; k < obstaculos.length; k++) {
 				if (kyojines[i].chocasteConUnObstaculo(obstaculos[k])) {
-					kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+					kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
 							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
 				}
 			}
 		}
-		
 
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
 
@@ -74,8 +74,7 @@ public class Juego extends InterfaceJuego {
 		for (Obstaculo o : obstaculos) {
 			o.dibujar(entorno);
 		}
-		
-		
+
 		for (Kyojin k : kyojines) {
 			k.dibujar(entorno);
 			k.moverseHaciaMikasa(mikasa);
@@ -89,7 +88,8 @@ public class Juego extends InterfaceJuego {
 			}
 		}
 
-		// choque entre kyojines, esto no se puede meter en el foreach porque cada kyojin se compara con si mismo
+		// choque entre kyojines, esto no se puede meter en el foreach porque cada
+		// kyojin se compara con si mismo
 		for (int i = 0; i < kyojines.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (kyojines[i].chocasteConAlgunOtro(kyojines[j])) {
@@ -108,20 +108,45 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (entorno.estaPresionada('w')) {
-			if (! mikasa.chocasteConEntorno(entorno)) {
+			if (!mikasa.chocasteConEntorno(entorno)) {
 				mikasa.avanzar();
 			} else {
 				mikasa.retroceder();
 				System.out.println("choque con entorno/obstaculo");
 			}
 		}
-		
-		if(entorno.sePresiono(entorno.TECLA_ESPACIO)) {
-			Proyectil proyectil = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo(), 1);
+
+		if (entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
+			if (proyectil == null) {
+				proyectil = mikasa.crarProyectil();
+			}
+		}
+		if (proyectil != null) {
 			proyectil.dibujar(entorno);
 			proyectil.avanzar();
 		}
-	
+		if (proyectil.chocasteCon(entorno)) {
+			proyectil = null;
+		}
+//		if (proyectil.chocasteConObstaculo(obstaculos[1])) {
+//			proyectil = null;
+//		}
+
+		for (Obstaculo o : obstaculos) {
+			if (proyectil.chocasteConObstaculo(o)) {
+				proyectil = null;
+			}
+		}
+	}
+
+	public int vivos(Kyojin[] k) {
+		int cont = 0;
+		for (int i = 0; i < k.length; i++) {
+			if (k[i] != null) {
+				cont++;
+			}
+		}
+		return cont;
 	}
 
 	@SuppressWarnings("unused")
