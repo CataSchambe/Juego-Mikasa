@@ -2,7 +2,7 @@
 
 == Programación 1: Trabajo Practico Grupal 
 
-Lara Micaela <micaelalara7u7@gmail.com> *Legajo:*
+Lara Micaela <micaelalara7u7@gmail.com> *Legajo: 44173253*
 
 Rempel Marcos <marcosdrempel02@gmail.com>  *Legajo: 44097748*
 
