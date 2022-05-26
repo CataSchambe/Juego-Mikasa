@@ -25,7 +25,7 @@ public class Mikasa {
 		this.angulo = angulo;
 		this.tamaño = 50;
 		this.color = Color.YELLOW;
-		this.img = Herramientas.cargarImagen("mikasa-flecha.png");
+		this.img = Herramientas.cargarImagen("mikasa.png");
 	}
 
 	public void dibujar(Entorno e) {

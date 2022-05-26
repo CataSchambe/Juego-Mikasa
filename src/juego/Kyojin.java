@@ -33,9 +33,6 @@ public class Kyojin {
 	}
 
 	public void moverseHaciaMikasa(Mikasa mikasa) {
-		// x += velocidad * Math.cos(angulo); // prueba del pong
-		// y += velocidad * Math.sin(angulo);
-
 		if (x < mikasa.getX() && y < mikasa.getY()) {
 			x += velocidad;
 			y += velocidad;

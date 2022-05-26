@@ -22,7 +22,7 @@ public class Juego extends InterfaceJuego {
 
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 3, 0);
 
-		// generación de obstaculos (fijos)
+		// generaciÃ³n de obstaculos (fijos)
 		obstaculos = new Obstaculo[5];
 
 		obstaculos[0] = new Obstaculo (115, 397);
@@ -32,7 +32,7 @@ public class Juego extends InterfaceJuego {
 		obstaculos[4] = new Obstaculo (625, 319);
 		
 
-//		generación de kyojines en la pantalla
+//		generaciÃ³n de kyojines en la pantalla
 		kyojines = new Kyojin[5];
 		for (int i = 0; i < kyojines.length; i++) {
 			kyojines[i] = new Kyojin ((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
@@ -117,7 +117,7 @@ public class Juego extends InterfaceJuego {
 		}
 		
 		if(entorno.sePresiono(entorno.TECLA_ESPACIO)) {
-			Proyectil proyectil = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo(), 3);
+			Proyectil proyectil = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo(), 1);
 			proyectil.dibujar(entorno);
 			proyectil.avanzar();
 		}
