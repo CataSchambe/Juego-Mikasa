@@ -1,8 +1,11 @@
 (Caratula)
+
 == Programación 1: Trabajo Practico Grupal 
 
 Lara Micaela <micaelalara7u7@gmail.com> *Legajo:*
+
 Rempel Marcos <marcosdrempel02@gmail.com>  *Legajo: 44097748*
+
 Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
 == Introducción 
@@ -26,7 +29,7 @@ Los últimos problemas que se nos presentaron fueron es el comportamie
 
 Nos pareció buena idea sumarle una pantalla de inicio para arrancar el juego y luego al finalizar que muestre el típico cartel de "GAME OVER"
 
-== Implementación 
+== Implementación 
 Una sección de implementación donde se incluya el código fuente correctamente 
 formateado y comentado, si corresponde.
 
