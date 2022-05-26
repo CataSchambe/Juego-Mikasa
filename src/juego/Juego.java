@@ -63,6 +63,7 @@ public class Juego extends InterfaceJuego {
 		}
 
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
+		
 
 		this.entorno.iniciar();
 	}
@@ -118,7 +119,7 @@ public class Juego extends InterfaceJuego {
 
 		if (entorno.estaPresionada(entorno.TECLA_ESPACIO)) {
 			if (proyectil == null) {
-				proyectil = mikasa.crarProyectil();
+				proyectil = mikasa.crearProyectil();
 			}
 		}
 		if (proyectil != null) {
@@ -137,6 +138,14 @@ public class Juego extends InterfaceJuego {
 				proyectil = null;
 			}
 		}
+		for (Kyojin k : kyojines) {
+			if (proyectil.chocasteConKyojin(k))
+				proyectil = null;
+		}
+		//Ver como hacer para que cuando el proyectil toque al kyojin el kyojin muera/desaparezca
+		//if (proyectil.chocasteConKyojin()) { FIME 
+			//Kyojin kyojines = null; 
+		//}
 	}
 
 	public int vivos(Kyojin[] k) {

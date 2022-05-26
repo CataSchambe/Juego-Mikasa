@@ -54,9 +54,14 @@ public class Kyojin {
 	// colisiones entre círculos:
 	// ocurren cuando la distancia entre ambos centros (teorema Pitagoras) es menor
 	// que la suma de ambos radios (tamaño/2)
+	
+	public void cambiarDeDireccion() {
+		angulo += Math.PI / 2; // todavia hay que ver que hace si sale del entorno
+	}
 	public boolean chocasteConAlgunOtro(Kyojin kyojin) { // chocasteConOtro()
 		return Math.sqrt(Math.pow(x - kyojin.getX(), 2) + Math.pow(y - kyojin.getY(), 2)) < tamaño / 2
 				+ kyojin.getTamaño() / 2;
+		//(Math.sqrt(Math.pow(Math.abs(x - kyojin.getX()), 2) + Math.pow(Math.abs(y - kyojin.getY()), 2))) < 85;
 	}
 
 	public boolean chocasteConUnObstaculo(Obstaculo obstaculo) {
@@ -73,9 +78,7 @@ public class Kyojin {
 		return x < tamaño / 2 || x > entorno.ancho() - tamaño / 2 || y < tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
 
-	public void cambiarDeDireccion() {
-		angulo += Math.PI / 2; // todavia hay que ver que hace si sale del entorno
-	}
+	
 
 	public double getX() {
 		return x;

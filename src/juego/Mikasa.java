@@ -30,7 +30,7 @@ public class Mikasa {
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(img, this.x, this.y, angulo, 0.3);
+		e.dibujarImagen(img, this.x, this.y, angulo, 0.2);
 	}
 
 	public void avanzar() {
@@ -61,17 +61,16 @@ public class Mikasa {
 		return x < entorno.ancho() - entorno.ancho() + tamaño / 2 || x > entorno.ancho() - tamaño / 2
 				|| y < entorno.alto() - entorno.alto() + tamaño / 2 || y > entorno.alto() - tamaño / 2;
 	}
-	
+
 	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
-		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) 
-				< tamaño / 2 + obstaculo.getTamaño() / 2;
+		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
+				+ obstaculo.getTamaño() / 2;
 	}
-	
 
 	public double getTamaño() {
 		return tamaño;
 	}
-	
+
 	public double getAngulo() {
 		return angulo;
 	}
@@ -84,8 +83,8 @@ public class Mikasa {
 		return y;
 	}
 
-	public Proyectil crarProyectil() {
-return new Proyectil (x,y,angulo,velocidad);		
+	public Proyectil crearProyectil() {
+		return new Proyectil(x, y, angulo, velocidad);
 	}
 
 }
