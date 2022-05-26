@@ -63,7 +63,6 @@ public class Juego extends InterfaceJuego {
 		}
 
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
-		
 
 		this.entorno.iniciar();
 	}
@@ -142,10 +141,11 @@ public class Juego extends InterfaceJuego {
 			if (proyectil.chocasteConKyojin(k))
 				proyectil = null;
 		}
-		//Ver como hacer para que cuando el proyectil toque al kyojin el kyojin muera/desaparezca
-		//if (proyectil.chocasteConKyojin()) { FIME 
-			//Kyojin kyojines = null; 
-		//}
+		// Ver como hacer para que cuando el proyectil toque al kyojin el kyojin
+		// muera/desaparezca
+		// if (proyectil.chocasteConKyojin()) { FIME
+		// Kyojin kyojines = null;
+		// }
 	}
 
 	public int vivos(Kyojin[] k) {
