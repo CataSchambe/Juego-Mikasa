@@ -18,6 +18,8 @@ public class Juego extends InterfaceJuego {
 	private Image fondo;
 	private Suero suero;
 	private Proyectil proyectil;
+	
+	private int tiempo;
 
 	public Juego() {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);

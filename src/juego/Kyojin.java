@@ -34,20 +34,20 @@ public class Kyojin {
 
 	public void moverseHaciaMikasa(Mikasa mikasa) {
 		if (x < mikasa.getX() && y < mikasa.getY()) {
-			x += velocidad;
-			y += velocidad;
+			x += 0.1;
+			y += 0.1;
 		}
 		if (x > mikasa.getX() && y > mikasa.getY()) {
-			x -= velocidad;
-			y -= velocidad;
+			x -= 0.1;
+			y -= 0.1;
 		}
 		if (x < mikasa.getX() && y > mikasa.getY()) {
-			x += velocidad;
-			y -= velocidad;
+			x += 0.1;
+			y -= 0.1;
 		}
 		if (x > mikasa.getX() && y < mikasa.getY()) {
-			x -= velocidad;
-			y += velocidad;
+			x -= 0.1;
+			y += 0.1;
 		}
 	}
 
