@@ -12,23 +12,23 @@ public class Proyectil {
 	private double y;
 
 	private double tamaño;
-	//private double velocidad;
+	private double velocidad;
 	private double angulo;
-	//private Color color;
+	private Color color;
 	private Image img;
 
 	public Proyectil(double x, double y, double angulo, double velocidad) {
 		this.x = x;
 		this.y = y;
-		//this.velocidad = velocidad;
+		this.velocidad = velocidad;
 		this.angulo = angulo;
 		this.tamaño = 25;
-		//this.color = Color.GREEN;
+		this.color = Color.GREEN;
 		this.img = Herramientas.cargarImagen("proyectil.png");
 	}
 
 	public void dibujar(Entorno e) {
-		//e.dibujarCirculo(x, y, tamaño, color);
+		e.dibujarCirculo(x, y, tamaño, color);
 		e.dibujarImagen(img, x, y, angulo, 0.2);
 		;
 	}
@@ -47,7 +47,6 @@ public class Proyectil {
 				+ obstaculo.getTamaño() / 2;
 	}
 
-//	
 	public boolean chocasteConKyojin(Kyojin kyojin) {
 		return (Math.sqrt(
 				Math.pow(Math.abs(this.x - kyojin.getX()), 2) + Math.pow(Math.abs(this.y - kyojin.getY()), 2))) < 40;

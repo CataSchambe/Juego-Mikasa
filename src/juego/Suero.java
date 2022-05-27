@@ -19,12 +19,12 @@ public class Suero {
 		this.y = y;
 		this.tamaño = 0.5;
 		this.color = Color.YELLOW;
-		this.imgPocion = Herramientas.cargarImagen("pocion.png"); //
+		this.imgPocion = Herramientas.cargarImagen("suero.png"); //
 	}
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(imgPocion, x, y, 0, 0.04);
+		e.dibujarImagen(imgPocion, x, y, 0, 0.1);
 	}
 
 }
