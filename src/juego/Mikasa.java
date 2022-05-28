@@ -14,6 +14,9 @@ public class Mikasa {
 	private double angulo;
 
 	private double tamaño;
+
+	private boolean modoKyojin;
+
 	private Image img;
 	private Color color; // esto es solo para el rectangulo que despues se termina ocultando, asi que da
 							// igual el color
@@ -26,6 +29,7 @@ public class Mikasa {
 		this.tamaño = 50;
 		this.color = Color.YELLOW;
 		this.img = Herramientas.cargarImagen("mikasa.png");
+		this.modoKyojin = false;
 	}
 
 	public void dibujar(Entorno e) {
@@ -37,10 +41,10 @@ public class Mikasa {
 		x = x + Math.cos(angulo) * velocidad;
 		y = y + Math.sin(angulo) * velocidad;
 	}
-	
+
 	public void detenerse(Entorno entorno) {
 		if (chocasteLadoIzquierdo(entorno)) {
-			x = tamaño / 2; 
+			x = tamaño / 2;
 		}
 		if (chocasteLadoDerecho(entorno)) {
 			x = entorno.ancho() - tamaño / 2;
@@ -53,6 +57,11 @@ public class Mikasa {
 		}
 	}
 
+	public void detenerseObs(Obstaculo obstaculo) { // FIXME
+		x = x;
+		y = y;
+	}
+
 	public void girarDerecha() {
 		angulo += 0.05;
 	}
@@ -61,22 +70,26 @@ public class Mikasa {
 		angulo -= 0.05;
 	}
 
+	public Proyectil crearProyectil() {
+		return new Proyectil(x, y, angulo, 5);
+	}
+
 	public boolean chocasteConEntorno(Entorno e) {
 		return chocasteLadoIzquierdo(e) || chocasteLadoDerecho(e) || chocasteLadoSuperior(e) || chocasteLadoInferior(e);
 	}
-	
+
 	public boolean chocasteLadoIzquierdo(Entorno entorno) {
 		return x - tamaño / 2 < entorno.ancho() * 0;
 	}
-	
+
 	public boolean chocasteLadoDerecho(Entorno entorno) {
 		return x + tamaño / 2 > entorno.ancho();
-		}
-	
+	}
+
 	public boolean chocasteLadoSuperior(Entorno entorno) {
 		return y - tamaño / 2 < entorno.alto() * 0;
 	}
-	
+
 	public boolean chocasteLadoInferior(Entorno entorno) {
 		return y + tamaño / 2 > entorno.alto();
 	}
@@ -100,10 +113,6 @@ public class Mikasa {
 
 	public double getY() {
 		return y;
-	}
-
-	public Proyectil crearProyectil() {
-		return new Proyectil(x, y, angulo, 5);
 	}
 
 }

@@ -28,14 +28,16 @@ public class Proyectil {
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarCirculo(x, y, tamaño, color);
+//		e.dibujarCirculo(x, y, tamaño, color);
 		e.dibujarImagen(img, x, y, angulo, 0.2);
 		;
 	}
 
+	// en lugar del 5 deberia ir velocidad, pero por algun motivo de esa manera no
+	// se respeta y el proyectil va muy lento
 	public void avanzar() {
-		x = x + Math.cos(angulo) * velocidad;
-		y = y + Math.sin(angulo) * velocidad;
+		x = x + Math.cos(angulo) * 5;
+		y = y + Math.sin(angulo) * 5;
 	}
 
 	public boolean chocasteCon(Entorno entorno) {

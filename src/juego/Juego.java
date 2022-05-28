@@ -18,7 +18,7 @@ public class Juego extends InterfaceJuego {
 	private Image fondo;
 	private Suero suero;
 	private Proyectil proyectil;
-	
+
 	private int tiempo = 0;
 	private int tiempoVuelta = 0;
 
@@ -26,8 +26,6 @@ public class Juego extends InterfaceJuego {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 2, 0);
 
-		
-		
 		// generaciÃ³n de obstaculos (fijos)
 		obstaculos = new Obstaculo[5];
 
@@ -92,8 +90,7 @@ public class Juego extends InterfaceJuego {
 			for (Obstaculo o : obstaculos) {
 				if (k.chocasteConUnObstaculo(o)) {
 					k.cambiarDeDireccion();
-					
-					
+
 				}
 			}
 		}
@@ -121,6 +118,11 @@ public class Juego extends InterfaceJuego {
 			if (mikasa.chocasteConEntorno(entorno)) {
 				mikasa.detenerse(entorno);
 			}
+			for (Obstaculo o : obstaculos) {
+				if (mikasa.chocasteConObstaculo(o)) {
+					mikasa.detenerseObs(o);
+				}
+			}
 			mikasa.avanzar();
 		}
 
@@ -142,7 +144,7 @@ public class Juego extends InterfaceJuego {
 //				}
 //			}
 			proyectil.avanzar();
-			
+
 			if (proyectil.chocasteCon(entorno)) {
 				proyectil = null;
 			}

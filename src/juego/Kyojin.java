@@ -38,7 +38,6 @@ public class Kyojin {
 		y = y + Math.sin(angulo) * velocidad;
 	}
 
-
 	public void cambiarDeDireccion() {
 		angulo += Math.PI / 2;
 		System.out.println("Un kyojin chocó con un obstáculo");

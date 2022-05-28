@@ -27,4 +27,8 @@ public class Suero {
 		e.dibujarImagen(imgPocion, x, y, 0, 0.1);
 	}
 
+//	public boolean teGenerasteSobreUnObstaculo (Obstaculo o) {
+//		return false;
+//	}
+
 }
