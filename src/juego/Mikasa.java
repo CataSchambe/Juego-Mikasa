@@ -34,32 +34,51 @@ public class Mikasa {
 	}
 
 	public void avanzar() {
-		x = x + Math.cos(angulo) * 2;
-		y = y + Math.sin(angulo) * 2;
+		x = x + Math.cos(angulo) * velocidad;
+		y = y + Math.sin(angulo) * velocidad;
 	}
-
-	// este método es para que si Mikasa choca con el entorno/obstaculo que
-	// retroceda un par de pixeles, sino se queda atrapada ya que en la clase juego
-	// no puede avanzar
-	public void retroceder() {
-		x = x - Math.cos(angulo) * 2;
-		y = y - Math.sin(angulo) * 2;
+	
+	public void detenerse(Entorno entorno) {
+		if (chocasteLadoIzquierdo(entorno)) {
+			x = tamaño / 2; 
+		}
+		if (chocasteLadoDerecho(entorno)) {
+			x = entorno.ancho() - tamaño / 2;
+		}
+		if (chocasteLadoSuperior(entorno)) {
+			y = tamaño / 2;
+		}
+		if (chocasteLadoInferior(entorno)) {
+			y = entorno.alto() - tamaño / 2;
+		}
 	}
 
 	public void girarDerecha() {
 		angulo += 0.05;
-//		System.out.println("angulo: " + angulo);
 	}
 
 	public void girarIzquierda() {
 		angulo -= 0.05;
-//		System.out.println("angulo: " + angulo);
 	}
 
-	public boolean chocasteConEntorno(Entorno entorno) { // consultar si en ancho-ancho y alto-alto directamente se
-															// puede poner 0
-		return x < entorno.ancho() - entorno.ancho() + tamaño / 2 || x > entorno.ancho() - tamaño / 2
-				|| y < entorno.alto() - entorno.alto() + tamaño / 2 || y > entorno.alto() - tamaño / 2;
+	public boolean chocasteConEntorno(Entorno e) {
+		return chocasteLadoIzquierdo(e) || chocasteLadoDerecho(e) || chocasteLadoSuperior(e) || chocasteLadoInferior(e);
+	}
+	
+	public boolean chocasteLadoIzquierdo(Entorno entorno) {
+		return x - tamaño / 2 < entorno.ancho() * 0;
+	}
+	
+	public boolean chocasteLadoDerecho(Entorno entorno) {
+		return x + tamaño / 2 > entorno.ancho();
+		}
+	
+	public boolean chocasteLadoSuperior(Entorno entorno) {
+		return y - tamaño / 2 < entorno.alto() * 0;
+	}
+	
+	public boolean chocasteLadoInferior(Entorno entorno) {
+		return y + tamaño / 2 > entorno.alto();
 	}
 
 	public boolean chocasteConObstaculo(Obstaculo obstaculo) {

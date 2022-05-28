@@ -21,7 +21,7 @@ public class Kyojin {
 		this.x = x;
 		this.y = y;
 		this.velocidad = velocidad;
-		this.angulo = 0;
+		this.angulo = angulo;
 		this.tamaño = 50;
 		this.color = Color.BLUE;
 		this.img = Herramientas.cargarImagen("kyojin.png");
@@ -29,34 +29,19 @@ public class Kyojin {
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(img, this.x, this.y, 0, 0.10);
+		e.dibujarImagen(img, this.x, this.y, 0, 0.04);
 	}
 
 	public void moverseHaciaMikasa(Mikasa mikasa) {
-		if (x < mikasa.getX() && y < mikasa.getY()) {
-			x += 0.1;
-			y += 0.1;
-		}
-		if (x > mikasa.getX() && y > mikasa.getY()) {
-			x -= 0.1;
-			y -= 0.1;
-		}
-		if (x < mikasa.getX() && y > mikasa.getY()) {
-			x += 0.1;
-			y -= 0.1;
-		}
-		if (x > mikasa.getX() && y < mikasa.getY()) {
-			x -= 0.1;
-			y += 0.1;
-		}
+		angulo = Math.atan2(mikasa.getY() - y, mikasa.getX() - x);
+		x = x + Math.cos(angulo) * velocidad;
+		y = y + Math.sin(angulo) * velocidad;
 	}
 
-	// colisiones entre círculos:
-	// ocurren cuando la distancia entre ambos centros (teorema Pitagoras) es menor
-	// que la suma de ambos radios (tamaño/2)
 
 	public void cambiarDeDireccion() {
-		angulo += Math.PI / 2; // todavia hay que ver que hace si sale del entorno
+		angulo += Math.PI / 2;
+		System.out.println("Un kyojin chocó con un obstáculo");
 	}
 
 	public boolean chocasteConAlgunOtro(Kyojin kyojin) { // chocasteConOtro()

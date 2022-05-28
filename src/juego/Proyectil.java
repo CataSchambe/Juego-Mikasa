@@ -34,8 +34,8 @@ public class Proyectil {
 	}
 
 	public void avanzar() {
-		x = x + Math.cos(angulo) * 2;
-		y = y + Math.sin(angulo) * 2;
+		x = x + Math.cos(angulo) * velocidad;
+		y = y + Math.sin(angulo) * velocidad;
 	}
 
 	public boolean chocasteCon(Entorno entorno) {

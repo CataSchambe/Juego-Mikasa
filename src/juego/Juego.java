@@ -19,12 +19,15 @@ public class Juego extends InterfaceJuego {
 	private Suero suero;
 	private Proyectil proyectil;
 	
-	private int tiempo;
+	private int tiempo = 0;
+	private int tiempoVuelta = 0;
 
 	public Juego() {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);
-		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 3, 0);
+		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 2, 0);
 
+		
+		
 		// generaciÃ³n de obstaculos (fijos)
 		obstaculos = new Obstaculo[5];
 
@@ -35,27 +38,24 @@ public class Juego extends InterfaceJuego {
 		obstaculos[4] = new Obstaculo(625, 319);
 
 		suero = new Suero(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
-//		for (int i = 0; i < suero.length; i++) {
-//			suero[i].dibujar(entorno);
-//		}
 
 //		generaciÃ³n de kyojines en la pantalla
 		kyojines = new Kyojin[5];
 		for (int i = 0; i < kyojines.length; i++) {
 			kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
-					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.25);
+					(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
 
 			// para evitar que un kyojin se genere de entrada en la ubicacion de Mikasa
 			if (kyojines[i].chocasteConMikasa(mikasa)) {
 				kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
-						(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
+						(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
 			}
 
 			// para evitar que dos kyojines se generen en el mismo lugar
 			for (int j = 0; j < i; j++) {
 				if (kyojines[i].chocasteConAlgunOtro(kyojines[j])) {
 					kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
-							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
+							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
 				}
 			}
 
@@ -63,7 +63,7 @@ public class Juego extends InterfaceJuego {
 			for (int k = 0; k < obstaculos.length; k++) {
 				if (kyojines[i].chocasteConUnObstaculo(obstaculos[k])) {
 					kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
-							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 1);
+							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
 				}
 			}
 		}
@@ -92,6 +92,8 @@ public class Juego extends InterfaceJuego {
 			for (Obstaculo o : obstaculos) {
 				if (k.chocasteConUnObstaculo(o)) {
 					k.cambiarDeDireccion();
+					
+					
 				}
 			}
 		}
@@ -116,12 +118,10 @@ public class Juego extends InterfaceJuego {
 		}
 
 		if (entorno.estaPresionada('w')) {
-			if (!mikasa.chocasteConEntorno(entorno)) {
-				mikasa.avanzar();
-			} else {
-				mikasa.retroceder();
-				System.out.println("choque con entorno/obstaculo");
+			if (mikasa.chocasteConEntorno(entorno)) {
+				mikasa.detenerse(entorno);
 			}
+			mikasa.avanzar();
 		}
 
 //		if(entorno.sePresiono(entorno.TECLA_ESPACIO)) {
