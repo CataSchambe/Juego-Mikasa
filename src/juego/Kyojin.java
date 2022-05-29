@@ -53,9 +53,13 @@ public class Kyojin {
 
 	public void cambiarDeDireccion() {
 		angulo += Math.PI / 2;
-		System.out.println("Un kyojin chocó con un obstáculo");
 	}
-
+	
+	public void moverseAlReves() {
+		x = x + Math.cos(angulo) * velocidad;
+		y = y + Math.sin(angulo) * velocidad;
+	}
+	
 	public boolean chocasteConAlgunOtro(Kyojin kyojin) { // chocasteConOtro()
 		return Math.sqrt(Math.pow(x - kyojin.getX(), 2) + Math.pow(y - kyojin.getY(), 2)) < tamaño / 2
 				+ kyojin.getTamaño() / 2;

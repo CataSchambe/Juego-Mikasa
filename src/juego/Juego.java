@@ -21,12 +21,13 @@ public class Juego extends InterfaceJuego {
 
 	private int tiempo = 0;
 	private int tiempoVuelta = 0;
+	private int tiempoQuieto = 0;
 
 	public Juego() {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);
 		this.mikasa = new Mikasa(entorno.ancho() / 2, entorno.alto() / 2, 2, 0);
 
-		// generaciÃ³n de obstaculos (fijos)
+		// generación de obstaculos (fijos)
 		obstaculos = new Obstaculo[5];
 
 		obstaculos[0] = new Obstaculo(115, 397);
@@ -37,7 +38,7 @@ public class Juego extends InterfaceJuego {
 
 		suero = new Suero(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
 
-//		generaciÃ³n de kyojines en la pantalla
+//		generación de kyojines en la pantalla
 		kyojines = new Kyojin[5];
 		for (int i = 0; i < kyojines.length; i++) {
 			kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
@@ -90,7 +91,6 @@ public class Juego extends InterfaceJuego {
 			for (Obstaculo o : obstaculos) {
 				if (k.chocasteConUnObstaculo(o)) {
 					k.cambiarDeDireccion();
-
 				}
 			}
 		}
@@ -121,6 +121,7 @@ public class Juego extends InterfaceJuego {
 			for (Obstaculo o : obstaculos) {
 				if (mikasa.chocasteConObstaculo(o)) {
 					mikasa.detenerseObs(o);
+					System.out.println("Choque M-O");
 				}
 			}
 			mikasa.avanzar();

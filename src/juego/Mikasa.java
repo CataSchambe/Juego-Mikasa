@@ -58,8 +58,22 @@ public class Mikasa {
 	}
 
 	public void detenerseObs(Obstaculo obstaculo) { // FIXME
-		x = x;
-		y = y;
+		if (x < obstaculo.getX() && y < obstaculo.getY()) {
+			x -= velocidad;
+			y -= velocidad;
+		}
+		if (x > obstaculo.getX() && y < obstaculo.getY()) {
+			x += velocidad;
+			y -= velocidad;
+		}
+		if (x < obstaculo.getX() && y > obstaculo.getY()) {
+			x -= velocidad;
+			y += velocidad;
+		}
+		if (x > obstaculo.getX() && y > obstaculo.getY()) {
+			x += velocidad;
+			y += velocidad;
+		}
 	}
 
 	public void girarDerecha() {
