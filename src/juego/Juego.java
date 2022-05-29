@@ -134,19 +134,34 @@ public class Juego extends InterfaceJuego {
 		}
 		if (proyectil != null) {
 			proyectil.dibujar(entorno);
-//			for (Obstaculo o : obstaculos) { 
-//				if (proyectil.chocasteConObstaculo(o)) {
-//					proyectil = null;
-//				}
-//			}
+			for (Obstaculo o : obstaculos) { 
+				if (proyectil.chocasteConObstaculo(o)) {
+					proyectil = null;
+					return;
+				}
+			}
+			for (Kyojin k : kyojines) { 
+				if (proyectil.chocasteConKyojin(k)) {
+					proyectil = null;  //falta hacer que desaparezca el kyojin tambien
+					return;
+				}
+			}
 			proyectil.avanzar();
 
 			if (proyectil.chocasteCon(entorno)) {
 				proyectil = null;
 			}
-
 		}
-
+	}
+	
+	public int kyijinesVivos(Kyojin[] k) {
+		int cant = 0;
+		for (Kyojin j : k) {
+			if (j != null) {
+				cant++;
+			}
+		}
+		return cant;
 	}
 
 	@SuppressWarnings("unused")
