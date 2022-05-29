@@ -126,19 +126,14 @@ public class Juego extends InterfaceJuego {
 			mikasa.avanzar();
 		}
 
-//		if(entorno.sePresiono(entorno.TECLA_ESPACIO)) {
-////			Proyectil proyectil = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo(), 1);
-////			proyectil.dibujar(entorno);
-////			proyectil.avanzar();
-//		}
 		if (entorno.estaPresionada(entorno.TECLA_ESPACIO) && proyectil == null) {
-			proyectil = new Proyectil(mikasa.getX(), mikasa.getY(), mikasa.getAngulo(), 1);
+			proyectil = mikasa.crearProyectil();
 			proyectil.dibujar(entorno);
 
 		}
 		if (proyectil != null) {
 			proyectil.dibujar(entorno);
-//			for (Obstaculo o : obstaculos) {
+//			for (Obstaculo o : obstaculos) { 
 //				if (proyectil.chocasteConObstaculo(o)) {
 //					proyectil = null;
 //				}

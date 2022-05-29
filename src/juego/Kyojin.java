@@ -32,10 +32,23 @@ public class Kyojin {
 		e.dibujarImagen(img, this.x, this.y, 0, 0.04);
 	}
 
-	public void moverseHaciaMikasa(Mikasa mikasa) {
-		angulo = Math.atan2(mikasa.getY() - y, mikasa.getX() - x);
-		x = x + Math.cos(angulo) * velocidad;
-		y = y + Math.sin(angulo) * velocidad;
+	public void moverseHaciaMikasa(Mikasa mikasa){ 
+		if (x < mikasa.getX() && y < mikasa.getY()){ 
+			x += velocidad; 
+			y += velocidad; 
+		} 
+		if (x > mikasa.getX() && y < mikasa.getY()){ 
+			x -= velocidad; 
+			y += velocidad; 
+		} 
+		if (x < mikasa.getX() && y > mikasa.getY()){ 
+			x += velocidad; 
+			y -= velocidad; 
+		} 
+		if (x > mikasa.getX() && y > mikasa.getY()){ 
+			x -= velocidad; 
+			y -= velocidad; 
+		} 		
 	}
 
 	public void cambiarDeDireccion() {
