@@ -219,7 +219,7 @@ public class Juego extends InterfaceJuego {
 								(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
 						kyojinesEnPantalla++;
 						for (int j = 0; j < obstaculos.length; j++) {
-							if (kyojines[i].chocasteConUnObstaculo(obstaculos[j]) ) {
+							if (kyojines[i].chocasteConUnObstaculo(obstaculos[j]) || kyojines[i].chocasteConMikasa(mikasa)) {
 								kyojines[i] = null;
 								kyojinesEnPantalla--;
 

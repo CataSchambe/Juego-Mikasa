@@ -1,8 +1,5 @@
-.Presentación
-
-image::caratula.png[]
-
- 
+Presentación::
+Trabajo Práctico P1::
 
 Lara Micaela <micaelalara7u7@gmail.com> *Legajo: 44173253*
 
@@ -10,16 +7,15 @@ Rempel Marcos <marcosdrempel02@gmail.com>  *Legajo: 44097748*
 
 Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
-.Introducción 
+Introducción:: 
 
-El trabajo práctico se basa en la programación de un juego llamado Attack on Titan, Final Season,el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
+El trabajo práctico se basa en la programación de un juego llamado Attack on Titan, Final Season,el cual ocurre en la Isla Paradis donde hayunos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
 Para combatir a los kyojines las Fuerzas Armadas de la Humanidad crearon La Legión de Reconocimiento encargada de exterminarlos.
-Mikasa Ackerman,sera nuestra heroína y el personaje principal del juego por así decirlo tiene la tarea de exterminar a todos los kyojines que invadieron la ciudad.
-Para exterminarlos cuenta con un proyectil que lanza para combatir a los kyojines y existe un suero el suero llamado kyojin no kessei,capaz de transformar temporalmente a una persona en un kyojin entonces cuando Mikasa lo toma se transforma temporalmente en una kyojina,lo que le brinda poderes. Si un kyojin toca a Mikasa, cuando se encuentra en estado de kyojina, el kyojin muere y Mikasa vuelve a su estado normal.
+Mikasa Ackerman,sera nuestra heroína y el personaje principal del juego por así decirlo tiene la tarea de exterminar a todos los kyojines que invadieron la ciudad.Para exterminarlos cuenta con un proyectil que lanza para combatir a los kyojines y existe un suero el suero llamado kyojin no kessei,capaz de transformar temporalmente a una persona en un kyojin entonces cuando Mikasa lo toma se transforma temporalmente enuna kyojina,lo que le brinda poderes. Si un kyojin toca a Mikasa, cuando se encuentra en estado de kyojina, el kyojin muere y Mikasa vuelveasu estado normal.
 
 Para programar el juego contamos con un Apéndice de implementación base y un entorno
 
-= Descripción 
+Descripción:: 
 Principalmente tuvimos inconvenientes en decidir que forma le dábamos a mikasa (circulo, rectángulo, triangulo, etc..)pero por suerte nos logramos poner de acuerdo en que seria mucho mas fácil que sea un circulo para poder darle movimiento mediante un 
 angulo mediante trigonometría.
 
@@ -37,7 +33,7 @@ Luego se nos hizo muy complicado el tema de las colisiones tanto los
 por suerte logramos darnos cuenta en donde estaba el error debatiendo bien a quien había que preguntarle "che chocaste
 con ..."
 
-Luego se nos dificulto la generación de los kyojines y del proyectil,ya que con el proyectil en primer momento solo se lanzaba por 1 segundo, pero lo arreglamos implementando un if en la clase juego
+Luego se nos dificulto la generación de los kyojines y del proyectil,ya que con el proyectil en primer momento solo se lanzaba por 1 segundo,pero lo arreglamos implementando un if en la clase juego
 
 .Creacion del proyectil
 
