@@ -166,7 +166,7 @@ public class Juego extends InterfaceJuego {
 				mikasa.avanzar();
 			}
 
-			if (entorno.estaPresionada(entorno.TECLA_ESPACIO) && proyectil == null) {
+			if (entorno.sePresiono(entorno.TECLA_ESPACIO) && proyectil == null) {
 				proyectil = mikasa.crearProyectil();
 			}
 
@@ -189,10 +189,11 @@ public class Juego extends InterfaceJuego {
 			for (int i = 0; i < kyojines.length; i++) {
 				// muerte de kyojin por choque con proyectil
 				if (proyectil != null && kyojines[i] != null && proyectil.chocasteConKyojin(kyojines[i])) {
+					proyectil = null;
 					kyojines[i] = null;
 					kyojinesEliminados++;
 					kyojinesEnPantalla--;
-					proyectil = null;
+//					proyectil = null;
 					return;
 				}
 				// muerte de kyojin por choque con mikasa transformada
@@ -219,7 +220,8 @@ public class Juego extends InterfaceJuego {
 								(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
 						kyojinesEnPantalla++;
 						for (int j = 0; j < obstaculos.length; j++) {
-							if (kyojines[i].chocasteConUnObstaculo(obstaculos[j]) || kyojines[i].chocasteConMikasa(mikasa)) {
+							if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])
+									|| kyojines[i].chocasteConMikasa(mikasa)) {
 								kyojines[i] = null;
 								kyojinesEnPantalla--;
 
