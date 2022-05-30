@@ -60,7 +60,7 @@ Luego se nos dificulto la generación de los kyojines y del proyectil
 		}
 ----
   
-Los últimos problemas que se nos presentaron fueron como hacer para que mikasa mate a los kyojines y como hacer para que en un determinado tiempo se regeneren, luego nos dimos cuenta que podíamos hacerla con uno de los métodos hechos en clase que nos permitía eliminar elementos de una lista y de esta manera si el proyectil toca al kyojin el kyojin "muere" y desaparece de la pantalla. 
+Los últimos problemas que se nos presentaron fue como hacer como hacer para que en un determinado tiempo se regeneren, luego nos dimos cuenta que podíamos hacerla con uno de los métodos hechos en clase que nos permitía eliminar elementos de una lista y de esta manera si el proyectil toca al kyojin el kyojin "muere" y desaparece de la pantalla. 
 En la clase juego
 
 .Regeneracion de Kyojines
@@ -86,13 +86,17 @@ En la clase juego
 ----
 Después tuvimos complicaciones con las colisiones del proyectil ya que si bien andaba bien el juego y demas, internamente nos tiraba excepsiones y errores, pero sorprendentemente se solucionó añadiendo un return al final del método
 
-Nos pareció buena idea sumarle una pantalla de inicio para arrancar el juego y luego al finalizar que muestre el típicocartel de "GAME OVER" y otro cartel que indique cuando ganaste.
+Nos pareció buena idea sumarle una pantalla al finalizar que muestre el típico cartel de "GAME OVER" y otro cartel que indique cuando ganaste.
 
-= Implementación 
+Implementación:: 
 Una sección de implementación donde se incluya el código fuente correctamente 
 formateado y comentado, si corresponde.
 
-= Conclusiones 
+Conclusiones::
+
+Tuvimos bastantes problemas con el desarrollo del juego y creemos que se debe a la falta de tiempo y de clases de consultas ya que tuvimos la mala suerte de tener dos feriados.
+No estamos conformes al 100% del resultado final del juego pero creemos que hicimos lo que pudimos y lo que sabiamos 
+Una de las pocas lecciones que concideramos que nos dejo este trabajo es que hay que ser rápidos
 Algunas reflexiones acerca del desarrollo del trabajo realizado y de los resultados obtenidos.
 Pueden incluirse lecciones aprendidas durante el desarrollo del trabajo.
 
