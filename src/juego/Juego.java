@@ -92,7 +92,7 @@ public class Juego extends InterfaceJuego {
 
 				for (Obstaculo o : obstaculos) {
 					if (kyojines[i].chocasteConUnObstaculo(o)) {
-						kyojines[i].cambiarDeDireccion();
+						kyojines[i].detenerseObs(o);
 					}
 				}
 				for (int j = 0; j < i; j++) {

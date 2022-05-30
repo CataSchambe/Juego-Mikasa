@@ -71,6 +71,24 @@ public class Kyojin {
 		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
 				+ obstaculo.getTamaño() / 2;
 	}
+	public void detenerseObs(Obstaculo obstaculo) { // FIXME
+		if (x < obstaculo.getX() && y < obstaculo.getY()) {
+			x -= velocidad;
+			y -= velocidad;
+		}
+		if (x > obstaculo.getX() && y < obstaculo.getY()) {
+			x += velocidad;
+			y -= velocidad;
+		}
+		if (x < obstaculo.getX() && y > obstaculo.getY()) {
+			x -= velocidad;
+			y += velocidad;
+		}
+		if (x > obstaculo.getX() && y > obstaculo.getY()) {
+			x += velocidad;
+			y += velocidad;
+		}
+	}
 
 	public boolean chocasteConMikasa(Mikasa mikasa) {
 		return Math.sqrt(Math.pow(x - mikasa.getX(), 2) + Math.pow(y - mikasa.getY(), 2)) < tamaño / 2
