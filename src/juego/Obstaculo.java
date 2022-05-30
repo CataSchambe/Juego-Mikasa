@@ -12,19 +12,16 @@ public class Obstaculo {
 	private double y;
 	private double tamaño;
 
-	private Color color;
 	private Image img;
 
 	public Obstaculo(double x, double y) {
 		this.x = x;
 		this.y = y;
 		this.tamaño = 35;
-		this.color = Color.RED;
-		this.img = Herramientas.cargarImagen("edificios.png"); // mikasa-derecha.png
+		this.img = Herramientas.cargarImagen("arboles.png"); 
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarCirculo(x, y, tamaño, color);
 		e.dibujarImagen(img, x, y, 0, 0.2); // FIXME
 	}
 
