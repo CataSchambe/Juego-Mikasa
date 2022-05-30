@@ -14,7 +14,6 @@ public class Kyojin {
 	private double velocidad;
 	private double angulo;
 	private double tamaño;
-	private Color color;
 	private Image img;
 
 	public Kyojin(double x, double y, double velocidad) {
@@ -23,12 +22,10 @@ public class Kyojin {
 		this.velocidad = velocidad;
 		this.angulo = angulo;
 		this.tamaño = 50;
-		this.color = Color.BLUE;
 		this.img = Herramientas.cargarImagen("kyojin.png");
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarCirculo(x, y, tamaño, color);
 		e.dibujarImagen(img, this.x, this.y, 0, 0.04);
 	}
 
