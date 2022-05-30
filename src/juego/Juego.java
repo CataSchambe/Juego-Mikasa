@@ -193,6 +193,11 @@ public class Juego extends InterfaceJuego {
 				tiempoDeSuero = 0;
 				return;
 			}
+			if (kyojines[i] != null && !mikasa.getModoKyojin() && kyojines[i].chocasteConMikasa(mikasa)) {
+
+				System.out.println("Mikasa debio morir");
+			}
+
 		}
 
 		// regeneracion de kyojines despues de cierto tiempo
@@ -201,14 +206,22 @@ public class Juego extends InterfaceJuego {
 				if (kyojines[i] == null) {
 					kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
 							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
+					kyojinesEnPantalla ++;
 					for (int j = 0; j < obstaculos.length; j++) {
 						if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])) {
 							kyojines[i] = null;
+							kyojinesEnPantalla -- ;
+							
 						}
 					}
 				}
 			}
 		}
+		
+		if (kyojinesEnPantalla==0) {
+			System.out.println("GANASTE");
+		}
+	
 
 	}
 
