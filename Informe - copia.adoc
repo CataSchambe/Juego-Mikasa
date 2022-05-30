@@ -381,5 +381,6 @@ Tuvimos bastantes problemas con el desarrollo del juego y creemos que se debe a 
 No estamos conformes al 100% del resultado final del juego pero creemos que hicimos lo que pudimos y lo que sabiamos.  
 Una de las pocas lecciones que consideramos que nos dejo este trabajo es que hay que ser rápidos ya que casi no llegamos a terminarlo por completo. 
 Entendimos la importancia y lo "complejo" que puede ser programar con objetos, ya que en trabajos anteriores, como el de IP, nunca nos habiamos metido en este mundo, y nos consolidamos programando en Java, lenguaje que en esta materia lo utilizamos por primera vez.
+Por ultimo, con este trabajo aprendimos a usar mejor Git. Es un programa bastante util para este tipo de cosas.
 
 
