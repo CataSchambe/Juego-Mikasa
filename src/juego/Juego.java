@@ -29,14 +29,14 @@ public class Juego extends InterfaceJuego {
 
 		// generación de obstaculos (fijos)
 		obstaculos = new Obstaculo[5];
-
+ 
 		obstaculos[0] = new Obstaculo(115, 397);
 		obstaculos[1] = new Obstaculo(427, 121);
 		obstaculos[2] = new Obstaculo(700, 520);
 		obstaculos[3] = new Obstaculo(178, 106);
 		obstaculos[4] = new Obstaculo(625, 319);
 
-		suero = new Suero(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
+		this.suero = new Suero(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
 
 //		generación de kyojines en la pantalla
 		kyojines = new Kyojin[5];
@@ -88,6 +88,7 @@ public class Juego extends InterfaceJuego {
 			if (k.chocasteConEntorno(entorno)) {
 				k.cambiarDeDireccion();
 			}
+			
 			for (Obstaculo o : obstaculos) {
 				if (k.chocasteConUnObstaculo(o)) {
 					k.cambiarDeDireccion();
@@ -105,6 +106,20 @@ public class Juego extends InterfaceJuego {
 				}
 			}
 		}
+		//crear tiempoDeSuero
+		if(/*tiempoDeSuero && */suero == null) {
+			suero = new Suero(Math.random() * entorno.ancho() , Math.random() * entorno.alto());
+			for (Obstaculo o : obstaculos) {
+				if (suero.chocasteConObstaculo(o)) {
+					suero = new Suero(Math.random() * entorno.ancho() , Math.random() * entorno.alto());
+				}
+			}	
+		}
+		if (suero != null && !mikasa.getModoKyojin() && mikasa.tomoSuero(suero)) {
+			suero = null;
+			//mikasa.transformacion();
+		}
+		
 
 		if (entorno.estaPresionada('a')) {
 			mikasa.girarIzquierda();
@@ -145,6 +160,13 @@ public class Juego extends InterfaceJuego {
 					proyectil = null;  //falta hacer que desaparezca el kyojin tambien
 					return;
 				}
+				//tendriamos que hacer que se elimine del array de kyojines creo
+				if (mikasa.getModoKyojin() && mikasa.chocasteConKyojin(k)) {
+						//kyojines.remove(k); 
+						//kyojinesMuertos ++;
+						//mikasa.transformacion();
+						return;
+				}
 			}
 			proyectil.avanzar();
 
@@ -152,16 +174,6 @@ public class Juego extends InterfaceJuego {
 				proyectil = null;
 			}
 		}
-	}
-	
-	public int kyijinesVivos(Kyojin[] k) {
-		int cant = 0;
-		for (Kyojin j : k) {
-			if (j != null) {
-				cant++;
-			}
-		}
-		return cant;
 	}
 
 	@SuppressWarnings("unused")

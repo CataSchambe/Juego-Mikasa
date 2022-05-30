@@ -17,7 +17,8 @@ public class Mikasa {
 
 	private boolean modoKyojin;
 
-	private Image img;
+	private Image imgMikasa;
+	private Image imgTransformada;
 	private Color color; // esto es solo para el rectangulo que despues se termina ocultando, asi que da
 							// igual el color
 
@@ -28,13 +29,18 @@ public class Mikasa {
 		this.angulo = angulo;
 		this.tamaño = 50;
 		this.color = Color.YELLOW;
-		this.img = Herramientas.cargarImagen("mikasa.png");
+		this.imgMikasa = Herramientas.cargarImagen("mikasa.png");
+		this.imgTransformada = Herramientas.cargarImagen("kyojin.png");
 		this.modoKyojin = false;
 	}
 
-	public void dibujar(Entorno e) {
-		e.dibujarCirculo(x, y, tamaño, color);
-		e.dibujarImagen(img, this.x, this.y, angulo, 0.2);
+	public void dibujar(Entorno entorno) {
+		if (!modoKyojin) {
+			entorno.dibujarImagen(imgMikasa, x, y, angulo,0.20);
+		}else {
+			entorno.dibujarImagen(imgTransformada, x, y, angulo,0.97);
+		}
+		
 	}
 
 	public void avanzar() {
@@ -112,6 +118,22 @@ public class Mikasa {
 		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
 				+ obstaculo.getTamaño() / 2;
 	}
+	public boolean chocasteConKyojin(Kyojin kyojin) {
+		return (Math.sqrt(
+				Math.pow(Math.abs(this.x - kyojin.getX()), 2) + Math.pow(Math.abs(this.y - kyojin.getY()), 2))) < 40;
+
+	}
+	public boolean tomoSuero(Suero suero) {
+		return Math.sqrt(Math.pow(x - suero.getX(), 2) + Math.pow(y - suero.getY(), 2)) < tamaño / 2
+				+ suero.getTamaño() / 2;
+	}
+	public void transformacion() {
+		if (!modoKyojin) {
+			modoKyojin = true;
+		}else {
+			modoKyojin = false;
+		}
+	}
 
 	public double getTamaño() {
 		return tamaño;
@@ -127,6 +149,9 @@ public class Mikasa {
 
 	public double getY() {
 		return y;
+	}
+	public boolean getModoKyojin() {
+		return modoKyojin;
 	}
 
 }
