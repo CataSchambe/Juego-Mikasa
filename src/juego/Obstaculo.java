@@ -18,12 +18,9 @@ public class Obstaculo {
 		this.x = x;
 		this.y = y;
 		this.tamaño = 35;
-<<<<<<< HEAD
-		this.color = Color.RED;
-		this.img = Herramientas.cargarImagen("edificios.png");
-=======
+
 		this.img = Herramientas.cargarImagen("arboles.png"); 
->>>>>>> d0c57f9ca7f637e87918821b6e5e32f519fed023
+
 	}
 
 	public void dibujar(Entorno e) {
