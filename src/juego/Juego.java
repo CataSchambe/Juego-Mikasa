@@ -99,6 +99,7 @@ public class Juego extends InterfaceJuego {
 					kyojines[i].moverseHaciaMikasa(mikasa);
 					if (kyojines[i].chocasteConEntorno(entorno)) {
 						kyojines[i].cambiarDeDireccion();
+						kyojines[i].moverseDireccionOpuesta();
 					}
 
 					for (Obstaculo o : obstaculos) {
