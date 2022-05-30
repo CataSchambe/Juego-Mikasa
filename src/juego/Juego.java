@@ -21,6 +21,7 @@ public class Juego extends InterfaceJuego {
 
 	private int tiempoDeJuego = 0;
 	private int tiempoDeSuero = 0;
+	private int intervaloKyojines;
 	private int segundos = 0;
 
 	private int kyojinesEliminados = 0;
@@ -68,6 +69,8 @@ public class Juego extends InterfaceJuego {
 			}
 		}
 
+		kyojinesEnPantalla = kyojines.length;
+
 		this.fondo = Herramientas.cargarImagen("pasto.jpg");
 
 		this.entorno.iniciar();
@@ -101,12 +104,13 @@ public class Juego extends InterfaceJuego {
 						kyojines[j].cambiarDeDireccion();
 					}
 				}
-				kyojinesEnPantalla++;
+//				kyojinesEnPantalla++;
 			}
 		}
 
 		tiempoDeSuero++;
 		tiempoDeJuego++;
+		intervaloKyojines++;
 
 		if (suero == null && tiempoDeSuero > 640 && !mikasa.getModoKyojin()) { // aprox 10 segundos
 			suero = new Suero(Math.random() * ((entorno.ancho() - 50) - 50) + 50,
@@ -176,6 +180,7 @@ public class Juego extends InterfaceJuego {
 			if (proyectil != null && kyojines[i] != null && proyectil.chocasteConKyojin(kyojines[i])) {
 				kyojines[i] = null;
 				kyojinesEliminados++;
+				kyojinesEnPantalla--;
 				proyectil = null;
 				return;
 			}
@@ -183,9 +188,25 @@ public class Juego extends InterfaceJuego {
 			if (mikasa.getModoKyojin() && kyojines[i] != null && kyojines[i].chocasteConMikasa(mikasa)) {
 				kyojines[i] = null;
 				kyojinesEliminados++;
+				kyojinesEnPantalla--;
 				mikasa.transformarse();
 				tiempoDeSuero = 0;
 				return;
+			}
+		}
+
+		// regeneracion de kyojines despues de cierto tiempo
+		if (intervaloKyojines % 960 == 0) { // chequea la cantidad de kyojines cada aprox 15 segundos
+			for (int i = 0; i < kyojines.length; i++) {
+				if (kyojines[i] == null) {
+					kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
+					for (int j = 0; j < obstaculos.length; j++) {
+						if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])) {
+							kyojines[i] = null;
+						}
+					}
+				}
 			}
 		}
 
