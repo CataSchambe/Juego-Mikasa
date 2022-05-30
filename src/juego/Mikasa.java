@@ -16,7 +16,7 @@ public class Mikasa {
 	private double tamaño;
 
 	private boolean modoKyojin;
-	private boolean estaViva;
+//	private boolean estaViva;
 
 	private Image imgMikasa;
 	private Image imgTransformada;
@@ -155,7 +155,7 @@ public class Mikasa {
 		return y;
 	}
 
-	public boolean getModoKyojin() {
+	public boolean getModoKyojin() { // estasEnModoKyojin()
 		return modoKyojin;
 	}
 

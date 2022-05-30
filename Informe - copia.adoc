@@ -10,18 +10,20 @@ Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 *Introducción* 
 
 El trabajo práctico se basa en la programación de un juego llamado Attack on Titan, Final Season, el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
+
 Para combatir a los kyojines las Fuerzas Armadas de la Humanidad crearon La Legión de Reconocimiento encargada de exterminarlos.
+
 Mikasa Ackerman sera nuestra heroína y el personaje principal del juego por así decirlo, tiene la tarea de exterminar a todos los kyojines que invadieron la ciudad.Para exterminarlos cuenta con un proyectil que lanza para combatir a los kyojines y existe un suero el suero llamado kyojin no kessei,capaz de transformar temporalmente a una persona en un kyojin, entonces cuando Mikasa lo toma se transforma temporalmente en una kyojina, lo que le brinda poderes. Si un kyojin toca a Mikasa, cuando se encuentra en estado de kyojina, el kyojin muere y Mikasa vuelve a su estado normal.
 
 Para programar el juego contamos con un Apéndice de implementación base y un entorno.
 
 *Descripción* 
 
-Principalmente tuvimos inconvenientes en decidir que forma le dábamos a mikasa (circulo, rectángulo, triangulo, etc..)pero por suerte nos logramos poner de acuerdo en que seria mucho mas fácil que sea un circulo para poder darle movimiento mediante un 
+Principalmente tuvimos inconvenientes en decidir que forma le dábamos a mikasa (circulo, rectángulo, triangulo, etc..)
+pero por suerte nos logramos poner de acuerdo en que sería mucho más fácil que sea un circulo para poder darle movimiento mediante un 
 angulo mediante trigonometría.
 
 .movimiento de mikasa
-
 [source, java]
 ----
     public void avanzar() {
@@ -34,7 +36,7 @@ Luego se nos hizo muy complicado el tema de las colisiones tanto los
 por suerte logramos darnos cuenta en donde estaba el error debatiendo bien a quien había que preguntarle "che chocaste
 con ...".
 
-Luego se nos dificulto la generación de los kyojines y del proyectil,ya que con el proyectil en primer momento solo se lanzaba por 1 segundo, pero lo arreglamos implementando un if en la clase juego.
+Luego se nos dificulto la generación de los kyojines y del proyectil, ya que con el proyectil en primer momento solo se lanzaba por 1 segundo, pero lo arreglamos implementando un if en la clase juego.
 
 .Creacion del proyectil
 
@@ -57,7 +59,12 @@ Luego se nos dificulto la generación de los kyojines y del proyectil
 		}
 ----
   
-Los últimos problemas que se nos presentaron fue como hacer como hacer para que en un determinado tiempo se regeneren, luego nos dimos cuenta que podíamos hacerla con uno de los métodos hechos en clase que nos permitía eliminar elementos de una lista y de esta manera si el proyectil toca al kyojin el kyojin "muere" y desaparece de la pantalla. 
+Los últimos problemas que se nos presentaron fue como hacer
+como hacer para que en un determinado tiempo se regeneren, luego nos
+dimos cuenta que podíamos hacerla con uno de los métodos hechos en clase
+que nos permitía eliminar elementos de una array y de esta manera si el
+proyectil toca al kyojin, el kyojin "muere" y desaparece de la pantalla. 
+
 En la clase juego
 
 .Regeneracion de Kyojines
@@ -378,9 +385,12 @@ public class Juego extends InterfaceJuego {
 *Conclusiones*
 
 Tuvimos bastantes problemas con el desarrollo del juego y creemos que se debe a la falta de tiempo dedicado y de clases de consultas, ya que tuvimos la mala suerte de tener dos feriados de por medio.
-No estamos conformes al 100% del resultado final del juego pero creemos que hicimos lo que pudimos y lo que sabiamos.  
+
+No estamos conformes al 100% del resultado final del juego pero creemos
+que hicimos lo que pudimos y lo que sabíamos.  
+
 Una de las pocas lecciones que consideramos que nos dejo este trabajo es que hay que ser rápidos ya que casi no llegamos a terminarlo por completo. 
+
 Entendimos la importancia y lo "complejo" que puede ser programar con objetos, ya que en trabajos anteriores, como el de IP, nunca nos habiamos metido en este mundo, y nos consolidamos programando en Java, lenguaje que en esta materia lo utilizamos por primera vez.
+
 Por ultimo, con este trabajo aprendimos a usar mejor Git. Es un programa bastante util para este tipo de cosas.
-
-

@@ -22,7 +22,7 @@ public class Juego extends InterfaceJuego {
 
 	private int tiempoDeJuego = 0;
 	private int tiempoDeSuero = 0;
-	private int intervaloKyojines;
+	private int intervaloKyojines; // intervaloDeReapariciónDeKyojines
 	private int segundos = 0;
 
 	private int kyojinesEliminados = 0;
@@ -85,6 +85,16 @@ public class Juego extends InterfaceJuego {
 	}
 
 	public void tick() {
+//		if (perdiste) {
+//			// hacés lo de perder
+//			return;
+//		}
+//		
+//		if (ganaste) {
+//			// hacés lo de ganar
+//			return;
+//		}
+		
 		if (kyojinesEnPantalla > 0 && mikasa.getEstaViva()) {
 			entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 			mikasa.dibujar(entorno);
@@ -176,15 +186,17 @@ public class Juego extends InterfaceJuego {
 				for (Obstaculo o : obstaculos) {
 					if (proyectil.chocasteConObstaculo(o)) {
 						proyectil = null;
-						return;
+						break;
 					}
 				}
 
-				if (proyectil.chocasteCon(entorno)) {
+				if (proyectil != null && proyectil.chocasteCon(entorno)) {
 					proyectil = null;
-					return;
 				}
-				proyectil.avanzar();
+				
+				if (proyectil != null) {
+					proyectil.avanzar();
+				}
 			}
 
 			for (int i = 0; i < kyojines.length; i++) {
@@ -194,7 +206,7 @@ public class Juego extends InterfaceJuego {
 					kyojines[i] = null;
 					kyojinesEliminados++;
 					kyojinesEnPantalla--;
-					return;
+					return; // break
 				}
 				// muerte de kyojin por choque con mikasa transformada
 				if (mikasa.getModoKyojin() && kyojines[i] != null && kyojines[i].chocasteConMikasa(mikasa)) {
@@ -207,7 +219,7 @@ public class Juego extends InterfaceJuego {
 				}
 				// muerte de mikasa en caso de chocar con kyojin en modo normal
 				if (kyojines[i] != null && !mikasa.getModoKyojin() && kyojines[i].chocasteConMikasa(mikasa)) {
-					mikasa.morirse();
+//					mikasa.morirse();
 				}
 
 			}
