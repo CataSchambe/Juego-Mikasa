@@ -32,46 +32,59 @@ public class Kyojin {
 		e.dibujarImagen(img, this.x, this.y, 0, 0.04);
 	}
 
-	public void moverseHaciaMikasa(Mikasa mikasa){ 
-		if (x < mikasa.getX() && y < mikasa.getY()){ 
-			x += velocidad; 
-			y += velocidad; 
-		} 
-		if (x > mikasa.getX() && y < mikasa.getY()){ 
-			x -= velocidad; 
-			y += velocidad; 
-		} 
-		if (x < mikasa.getX() && y > mikasa.getY()){ 
-			x += velocidad; 
-			y -= velocidad; 
-		} 
-		if (x > mikasa.getX() && y > mikasa.getY()){ 
-			x -= velocidad; 
-			y -= velocidad; 
-		} 		
+	public void moverseHaciaMikasa(Mikasa mikasa) {
+		if (x < mikasa.getX() && y < mikasa.getY()) {
+			x += velocidad;
+			y += velocidad;
+		}
+		if (x > mikasa.getX() && y < mikasa.getY()) {
+			x -= velocidad;
+			y += velocidad;
+		}
+		if (x < mikasa.getX() && y > mikasa.getY()) {
+			x += velocidad;
+			y -= velocidad;
+		}
+		if (x > mikasa.getX() && y > mikasa.getY()) {
+			x -= velocidad;
+			y -= velocidad;
+		}
 	}
 
 	public void cambiarDeDireccion() {
 		angulo += Math.PI / 2;
 	}
-	
-	public void moverseAlReves() {
-		x = x + Math.cos(angulo) * velocidad;
-		y = y + Math.sin(angulo) * velocidad;
-	}
-	
-	public boolean chocasteConAlgunOtro(Kyojin kyojin) { // chocasteConOtro()
+
+	public boolean chocasteConAlgunOtro(Kyojin kyojin) {
 		return Math.sqrt(Math.pow(x - kyojin.getX(), 2) + Math.pow(y - kyojin.getY(), 2)) < tamaño / 2
 				+ kyojin.getTamaño() / 2;
-		// (Math.sqrt(Math.pow(Math.abs(x - kyojin.getX()), 2) + Math.pow(Math.abs(y -
-		// kyojin.getY()), 2))) < 85;
 	}
 
 	public boolean chocasteConUnObstaculo(Obstaculo obstaculo) {
 		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
 				+ obstaculo.getTamaño() / 2;
 	}
-	public void detenerseObs(Obstaculo obstaculo) { // FIXME
+
+	public void detenerse(Kyojin kyojin) {
+		if (x < kyojin.getX() && y < kyojin.getY()) {
+			x -= velocidad;
+			y -= velocidad;
+		}
+		if (x > kyojin.getX() && y < kyojin.getY()) {
+			x += velocidad;
+			y -= velocidad;
+		}
+		if (x < kyojin.getX() && y > kyojin.getY()) {
+			x -= velocidad;
+			y += velocidad;
+		}
+		if (x > kyojin.getX() && y > kyojin.getY()) {
+			x += velocidad;
+			y += velocidad;
+		}
+	}
+
+	public void detenerseObs(Obstaculo obstaculo) {
 		if (x < obstaculo.getX() && y < obstaculo.getY()) {
 			x -= velocidad;
 			y -= velocidad;

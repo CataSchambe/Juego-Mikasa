@@ -16,11 +16,11 @@ public class Mikasa {
 	private double tamaño;
 
 	private boolean modoKyojin;
+	private boolean estaViva;
 
 	private Image imgMikasa;
 	private Image imgTransformada;
-	private Color color; // esto es solo para el rectangulo que despues se termina ocultando, asi que da
-							// igual el color
+	private Color color;
 
 	public Mikasa(double x, double y, double velocidad, double angulo) {
 		this.x = x;
@@ -32,6 +32,7 @@ public class Mikasa {
 		this.imgMikasa = Herramientas.cargarImagen("mikasa.png");
 		this.imgTransformada = Herramientas.cargarImagen("transformada.png");
 		this.modoKyojin = false;
+		this.estaViva = true;
 	}
 
 	public void dibujar(Entorno entorno) {
@@ -94,6 +95,10 @@ public class Mikasa {
 		modoKyojin = !modoKyojin;
 	}
 
+	public void morirse() {
+		estaViva = !estaViva;
+	}
+
 	public Proyectil crearProyectil() {
 		return new Proyectil(x, y, angulo, 5);
 	}
@@ -152,6 +157,10 @@ public class Mikasa {
 
 	public boolean getModoKyojin() {
 		return modoKyojin;
+	}
+
+	public boolean getEstaViva() {
+		return estaViva;
 	}
 
 }

@@ -20,17 +20,13 @@ public class Obstaculo {
 		this.y = y;
 		this.tamaño = 35;
 		this.color = Color.RED;
-		this.img = Herramientas.cargarImagen("edificios.png"); // mikasa-derecha.png
+		this.img = Herramientas.cargarImagen("edificios.png");
 	}
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
 		e.dibujarImagen(img, x, y, 0, 0.2); // FIXME
 	}
-
-//	public boolean teGenerasteSobreOtroObstaculo(Obstaculo obstaculo) {
-//		
-//	}
 
 	public double getX() {
 		return x;

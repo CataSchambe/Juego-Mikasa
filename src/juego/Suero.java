@@ -19,23 +19,19 @@ public class Suero {
 		this.y = y;
 		this.tamaño = 0.5;
 		this.color = Color.YELLOW;
-		this.imgPocion = Herramientas.cargarImagen("suero.png"); //
+		this.imgPocion = Herramientas.cargarImagen("suero.png");
 	}
 
 	public void dibujar(Entorno e) {
 		e.dibujarCirculo(x, y, tamaño, color);
 		e.dibujarImagen(imgPocion, x, y, 0, 0.1);
 	}
-	public boolean chocasteConObstaculo(Obstaculo obstaculo) {
+
+	public boolean teGenerasteSobreUnObstaculo(Obstaculo obstaculo) {
 		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
 				+ obstaculo.getTamaño() / 2;
 	}
-	
-	public boolean teGenerasteSobreUnObstaculo(Obstaculo obstaculo) {
-        return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
-                + obstaculo.getTamaño() / 2;
-    }
-	
+
 	public double getX() {
 		return x;
 	}
