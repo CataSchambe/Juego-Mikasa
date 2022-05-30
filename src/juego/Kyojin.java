@@ -51,7 +51,7 @@ public class Kyojin {
 	public void cambiarDeDireccion() {
 		angulo += Math.PI / 2;
 	}
-	
+
 	public void moverseDireccionOpuesta() {
 		x = x + Math.cos(angulo) * velocidad;
 		y = y + Math.sin(angulo) * velocidad;

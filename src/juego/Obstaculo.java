@@ -17,9 +17,9 @@ public class Obstaculo {
 	public Obstaculo(double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.tamaño = 35;
+		this.tamaño = 60;
 
-		this.img = Herramientas.cargarImagen("arboles.png"); 
+		this.img = Herramientas.cargarImagen("arboles.png");
 
 	}
 

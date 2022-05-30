@@ -194,7 +194,6 @@ public class Juego extends InterfaceJuego {
 					kyojines[i] = null;
 					kyojinesEliminados++;
 					kyojinesEnPantalla--;
-//					proyectil = null;
 					return;
 				}
 				// muerte de kyojin por choque con mikasa transformada
