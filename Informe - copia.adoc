@@ -7,13 +7,13 @@ Rempel Marcos <marcosdrempel02@gmail.com>  *Legajo: 44097748*
 
 Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
-Introducción:: 
+*Introducción* 
 
-El trabajo práctico se basa en la programación de un juego llamado Attack on Titan, Final Season,el cual ocurre en la Isla Paradis donde hayunos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
+El trabajo práctico se basa en la programación de un juego llamado Attack on Titan, Final Season, el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
 Para combatir a los kyojines las Fuerzas Armadas de la Humanidad crearon La Legión de Reconocimiento encargada de exterminarlos.
-Mikasa Ackerman,sera nuestra heroína y el personaje principal del juego por así decirlo tiene la tarea de exterminar a todos los kyojines que invadieron la ciudad.Para exterminarlos cuenta con un proyectil que lanza para combatir a los kyojines y existe un suero el suero llamado kyojin no kessei,capaz de transformar temporalmente a una persona en un kyojin entonces cuando Mikasa lo toma se transforma temporalmente enuna kyojina,lo que le brinda poderes. Si un kyojin toca a Mikasa, cuando se encuentra en estado de kyojina, el kyojin muere y Mikasa vuelveasu estado normal.
+Mikasa Ackerman sera nuestra heroína y el personaje principal del juego por así decirlo, tiene la tarea de exterminar a todos los kyojines que invadieron la ciudad.Para exterminarlos cuenta con un proyectil que lanza para combatir a los kyojines y existe un suero el suero llamado kyojin no kessei,capaz de transformar temporalmente a una persona en un kyojin, entonces cuando Mikasa lo toma se transforma temporalmente en una kyojina, lo que le brinda poderes. Si un kyojin toca a Mikasa, cuando se encuentra en estado de kyojina, el kyojin muere y Mikasa vuelve a su estado normal.
 
-Para programar el juego contamos con un Apéndice de implementación base y un entorno
+Para programar el juego contamos con un Apéndice de implementación base y un entorno.
 
 *Descripción* 
 
@@ -30,11 +30,11 @@ angulo mediante trigonometría.
 	}
 ----
 
-Luego se nos hizo muy complicado el tema de las colisiones tanto los kyojines entre ellos como mikasa con los obstáculos o los kyojines con los obstáculos 
+Luego se nos hizo muy complicado el tema de las colisiones tanto los kyojines entre ellos como mikasa con los obstáculos o los kyojines con los obstáculos, 
 por suerte logramos darnos cuenta en donde estaba el error debatiendo bien a quien había que preguntarle "che chocaste
-con ..."
+con ...".
 
-Luego se nos dificulto la generación de los kyojines y del proyectil,ya que con el proyectil en primer momento solo se lanzaba por 1 segundo,pero lo arreglamos implementando un if en la clase juego
+Luego se nos dificulto la generación de los kyojines y del proyectil,ya que con el proyectil en primer momento solo se lanzaba por 1 segundo, pero lo arreglamos implementando un if en la clase juego.
 
 .Creacion del proyectil
 
@@ -81,9 +81,9 @@ En la clase juego
 			}
 		}
 ----
-Después tuvimos complicaciones con las colisiones del proyectil ya que si bien andaba bien el juego y demas, internamente nos tiraba excepciones y errores, pero sorprendentemente se solucionó añadiendo un return al final del método.
+Después tuvimos complicaciones con las colisiones del proyectil ya que si bien andaba bien el juego y demas, internamente nos tiraba excepciones y errores, pero sorprendentemente se solucionó añadiendo un return al final del método. Luego aparecieron mas excepciones, llegando a un punto de que los errores hacian al juego injugable, lo que llevo a una revision entera del codigo para llegar a la conclusion de que habia que preguntar siempre si el objeto a comparar no era un null.
 
-Nos pareció buena idea sumarle una pantalla al finalizar que muestre el típico cartel de "GAME OVER" y otro cartel que indique cuando ganaste.
+Nos pareció buena idea sumarle una pantalla al finalizar que muestre el típico cartel de "GAME OVER" y otro cartel que indique cuando ganaste. Con esto tambien tuvimos un problema de entrada, ya que se ejecutaban los carteles pero el metodo tick seguia corriendo. Para esto tuvimos que preguntar de entrada si mikasa existia y si habían kyojines en la pantalla.
 
 *Implementación* 
 
@@ -317,7 +317,7 @@ public class Juego extends InterfaceJuego {
 								(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
 						kyojinesEnPantalla++;
 						for (int j = 0; j < obstaculos.length; j++) {
-							if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])) {
+							if (kyojines[i].chocasteConUnObstaculo(obstaculos[j]) || kyojines[i].chocasteConMikasa(mikasa)) {
 								kyojines[i] = null;
 								kyojinesEnPantalla--;
 
@@ -377,8 +377,9 @@ public class Juego extends InterfaceJuego {
 
 *Conclusiones*
 
-Tuvimos bastantes problemas con el desarrollo del juego y creemos que se debe a la falta de tiempo y de clases de consultas ya que tuvimos la mala suerte de tener dos feriados.
-No estamos conformes al 100% del resultado final del juego pero creemos que hicimos lo que pudimos y lo que sabiamos 
-Una de las pocas lecciones que concideramos que nos dejo este trabajo es que hay que ser rápidos ya que casi no llegamos a terminarlo por completo
+Tuvimos bastantes problemas con el desarrollo del juego y creemos que se debe a la falta de tiempo dedicado y de clases de consultas, ya que tuvimos la mala suerte de tener dos feriados de por medio.
+No estamos conformes al 100% del resultado final del juego pero creemos que hicimos lo que pudimos y lo que sabiamos.  
+Una de las pocas lecciones que consideramos que nos dejo este trabajo es que hay que ser rápidos ya que casi no llegamos a terminarlo por completo. 
+Entendimos la importancia y lo "complejo" que puede ser programar con objetos, ya que en trabajos anteriores, como el de IP, nunca nos habiamos metido en este mundo, y nos consolidamos programando en Java, lenguaje que en esta materia lo utilizamos por primera vez.
 
 
