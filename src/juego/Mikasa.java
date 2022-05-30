@@ -90,6 +90,10 @@ public class Mikasa {
 		angulo -= 0.05;
 	}
 
+	public void transformarse() {
+		modoKyojin = !modoKyojin;
+	}
+
 	public Proyectil crearProyectil() {
 		return new Proyectil(x, y, angulo, 5);
 	}
@@ -128,15 +132,6 @@ public class Mikasa {
 	public boolean tomoSuero(Suero suero) {
 		return Math.sqrt(Math.pow(x - suero.getX(), 2) + Math.pow(y - suero.getY(), 2)) < tamaño / 2
 				+ suero.getTamaño() / 2;
-	}
-
-	public void transformacion() {
-		if (!modoKyojin) {
-			modoKyojin = true;
-			
-		} else {
-			modoKyojin = false;
-		}
 	}
 
 	public double getTamaño() {
