@@ -1,4 +1,5 @@
 .Presentación
+
 image::caratula.png[]
 
  
@@ -9,7 +10,7 @@ Rempel Marcos <marcosdrempel02@gmail.com>  *Legajo: 44097748*
 
 Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
-= Introducción 
+.Introducción 
 
 El trabajo práctico se basa en la programación de un juego llamado Attack on Titan, Final Season,el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
 Para combatir a los kyojines las Fuerzas Armadas de la Humanidad crearon La Legión de Reconocimiento encargada de exterminarlos.
@@ -21,17 +22,30 @@ Para programar el juego contamos con un Apéndice de implementación b
 = Descripción 
 Principalmente tuvimos inconvenientes en decidir que forma le dábamos a mikasa (circulo, rectángulo, triangulo, etc..)pero por suerte nos logramos poner de acuerdo en que seria mucho mas fácil que sea un circulo para poder darle movimiento mediante un 
 angulo mediante trigonometría.
-Luego se nos hizo muy complicado el tema de las colisiones tanto los kyojines entre ellos como mikasa con los obstáculos o los kyojines con
-los obstáculos, por suerte logramos darnos cuenta en donde estaba el error debatiendo bien a quien había que preguntarle "che chocaste
+
+.movimiento de mikasa
+
+[source, java]
+----
+    public void avanzar() {
+		x = x + Math.cos(angulo) * velocidad;
+		y = y + Math.sin(angulo) * velocidad;
+	}
+----
+
+Luego se nos hizo muy complicado el tema de las colisiones tanto los kyojines entre ellos como mikasa con los obstáculos o los kyojines con los obstáculos 
+por suerte logramos darnos cuenta en donde estaba el error debatiendo bien a quien había que preguntarle "che chocaste
 con ..."
 
 Luego se nos dificulto la generación de los kyojines y del proyectil,ya que con el proyectil en primer momento solo se lanzaba por 1 segundo, pero lo arreglamos implementando un if en la clase juego
+
 .Creacion del proyectil
+
 [source, java]
 ----
-if (proyectil != null) {
-     proyectil.dibujar(entorno);
-         for (Obstaculo o : obstaculos) {
+    if (proyectil != null) {
+    proyectil.dibujar(entorno);
+    for (Obstaculo o : obstaculos) {
 			 if (proyectil.chocasteConObstaculo(o)) {
 				proyectil = null;
 				return;
@@ -48,25 +62,27 @@ if (proyectil != null) {
   
 Los últimos problemas que se nos presentaron fueron como hacer para que mikasa mate a los kyojines y como hacer para que en un determinado tiempo se regeneren, luego nos dimos cuenta que podíamos hacerla con uno de los métodos hechos en clase que nos permitía eliminar elementos de una lista y de esta manera si el proyectil toca al kyojin el kyojin "muere" y desaparece de la pantalla. 
 En la clase juego
+
 .Regeneracion de Kyojines
+
 [source, java]
 ----
-if (intervaloKyojines % 960 == 0) { // chequea la cantidad de kyojines cada aprox 15 segundos
-	 for (int i = 0; i < kyojines.length; i++) {
-         if (kyojines[i] == null) {
-	       kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
-              (Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
-              kyojinesEnPantalla ++;
-                    for (int j = 0; j < obstaculos.length; j++) {
-                      if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])) {
-                          kyojines[i] = null;
-                          kyojinesEnPantalla -- ;
+    if (intervaloKyojines % 960 == 0) { // chequea la cantidad de kyojines cada aprox 15 segundos
+			for (int i = 0; i < kyojines.length; i++) {
+				if (kyojines[i] == null) {
+					kyojines[i] = new Kyojin((Math.random() * ((entorno.ancho() - 100) - 100) + 100),
+							(Math.random() * ((entorno.alto() - 100) - 100) + 100), 0.3);
+					kyojinesEnPantalla ++;
+					for (int j = 0; j < obstaculos.length; j++) {
+						if (kyojines[i].chocasteConUnObstaculo(obstaculos[j])) {
+							kyojines[i] = null;
+							kyojinesEnPantalla -- ;
 							
-                      }
-                }
-           }
-     }
-}
+						}
+					}
+				}
+			}
+		}
 ----
 Después tuvimos complicaciones con las colisiones del proyectil ya que si bien andaba bien el juego y demas, internamente nos tiraba excepsiones y errores, pero sorprendentemente se solucionó añadiendo un return al final del método
 
