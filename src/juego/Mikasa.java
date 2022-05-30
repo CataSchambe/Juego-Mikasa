@@ -30,17 +30,17 @@ public class Mikasa {
 		this.tamaño = 50;
 		this.color = Color.YELLOW;
 		this.imgMikasa = Herramientas.cargarImagen("mikasa.png");
-		this.imgTransformada = Herramientas.cargarImagen("kyojin.png");
+		this.imgTransformada = Herramientas.cargarImagen("transformada.png");
 		this.modoKyojin = false;
 	}
 
 	public void dibujar(Entorno entorno) {
 		if (!modoKyojin) {
-			entorno.dibujarImagen(imgMikasa, x, y, angulo,0.20);
-		}else {
-			entorno.dibujarImagen(imgTransformada, x, y, angulo,0.97);
+			entorno.dibujarImagen(imgMikasa, x, y, angulo, 0.20);
+		} else {
+			entorno.dibujarImagen(imgTransformada, x, y, angulo, 0.28);
 		}
-		
+
 	}
 
 	public void avanzar() {
@@ -118,19 +118,23 @@ public class Mikasa {
 		return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
 				+ obstaculo.getTamaño() / 2;
 	}
+
 	public boolean chocasteConKyojin(Kyojin kyojin) {
 		return (Math.sqrt(
 				Math.pow(Math.abs(this.x - kyojin.getX()), 2) + Math.pow(Math.abs(this.y - kyojin.getY()), 2))) < 40;
 
 	}
+
 	public boolean tomoSuero(Suero suero) {
 		return Math.sqrt(Math.pow(x - suero.getX(), 2) + Math.pow(y - suero.getY(), 2)) < tamaño / 2
 				+ suero.getTamaño() / 2;
 	}
+
 	public void transformacion() {
 		if (!modoKyojin) {
 			modoKyojin = true;
-		}else {
+			
+		} else {
 			modoKyojin = false;
 		}
 	}
@@ -150,6 +154,7 @@ public class Mikasa {
 	public double getY() {
 		return y;
 	}
+
 	public boolean getModoKyojin() {
 		return modoKyojin;
 	}

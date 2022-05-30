@@ -19,9 +19,9 @@ public class Juego extends InterfaceJuego {
 	private Suero suero;
 	private Proyectil proyectil;
 
-	private int tiempo = 0;
-	private int tiempoVuelta = 0;
-	private int tiempoQuieto = 0;
+	private int tiempoDeJuego = 0;
+	private int tiempoDeSuero = 0;
+	private int segundos = 0;
 
 	public Juego() {
 		this.entorno = new Entorno(this, "Attack on Titan - Grupo 9", 800, 600);
@@ -29,14 +29,15 @@ public class Juego extends InterfaceJuego {
 
 		// generación de obstaculos (fijos)
 		obstaculos = new Obstaculo[5];
- 
+
 		obstaculos[0] = new Obstaculo(115, 397);
 		obstaculos[1] = new Obstaculo(427, 121);
 		obstaculos[2] = new Obstaculo(700, 520);
 		obstaculos[3] = new Obstaculo(178, 106);
 		obstaculos[4] = new Obstaculo(625, 319);
 
-		this.suero = new Suero(Math.random() * (entorno.ancho() - 0) + 0, (Math.random() * (entorno.alto() - 0)));
+		// this.suero = new Suero(Math.random() * (entorno.ancho() - 0) + 0,
+		// (Math.random() * (entorno.alto() - 0)));
 
 //		generación de kyojines en la pantalla
 		kyojines = new Kyojin[5];
@@ -76,7 +77,7 @@ public class Juego extends InterfaceJuego {
 	public void tick() {
 		entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 		mikasa.dibujar(entorno);
-		suero.dibujar(entorno);
+		// suero.dibujar(entorno);
 
 		for (Obstaculo o : obstaculos) {
 			o.dibujar(entorno);
@@ -88,14 +89,14 @@ public class Juego extends InterfaceJuego {
 			if (k.chocasteConEntorno(entorno)) {
 				k.cambiarDeDireccion();
 			}
-			
+
 			for (Obstaculo o : obstaculos) {
 				if (k.chocasteConUnObstaculo(o)) {
 					k.cambiarDeDireccion();
 				}
 			}
-		}
 
+		}
 		// choque entre kyojines, esto no se puede meter en el foreach porque cada
 		// kyojin se compara con si mismo
 		for (int i = 0; i < kyojines.length; i++) {
@@ -106,20 +107,39 @@ public class Juego extends InterfaceJuego {
 				}
 			}
 		}
-		//crear tiempoDeSuero
-		if(/*tiempoDeSuero && */suero == null) {
-			suero = new Suero(Math.random() * entorno.ancho() , Math.random() * entorno.alto());
+		tiempoDeSuero++;
+
+		if (suero == null && tiempoDeSuero > 640 && mikasa.getModoKyojin()) { // aprox 10 segundos
+			suero = new Suero(Math.random() * ((entorno.ancho() - 50) - 50) + 50,
+					50 + (Math.random() * (entorno.alto() - 50)));
+			for (Obstaculo o : obstaculos) {
+				if (suero.teGenerasteSobreUnObstaculo(o)) {
+					suero = null;
+				}
+			}
+		}
+
+		if (suero != null) {
+			suero.dibujar(entorno);
+		}
+
+		if (tiempoDeJuego % 64 == 0) { // aproximadamente un segundo
+			segundos++;
+		}
+
+		// crear tiempoDeSuero
+		if (/* tiempoDeSuero && */suero == null) {
+			suero = new Suero(Math.random() * entorno.ancho(), Math.random() * entorno.alto());
 			for (Obstaculo o : obstaculos) {
 				if (suero.chocasteConObstaculo(o)) {
-					suero = new Suero(Math.random() * entorno.ancho() , Math.random() * entorno.alto());
+					suero = new Suero(Math.random() * entorno.ancho(), Math.random() * entorno.alto());
 				}
-			}	
+			}
 		}
 		if (suero != null && !mikasa.getModoKyojin() && mikasa.tomoSuero(suero)) {
 			suero = null;
-			//mikasa.transformacion();
+			mikasa.transformacion();
 		}
-		
 
 		if (entorno.estaPresionada('a')) {
 			mikasa.girarIzquierda();
@@ -149,31 +169,35 @@ public class Juego extends InterfaceJuego {
 		}
 		if (proyectil != null) {
 			proyectil.dibujar(entorno);
-			for (Obstaculo o : obstaculos) { 
+			for (Obstaculo o : obstaculos) {
 				if (proyectil.chocasteConObstaculo(o)) {
 					proyectil = null;
 					return;
 				}
 			}
-			for (Kyojin k : kyojines) { 
-				if (proyectil.chocasteConKyojin(k)) {
-					proyectil = null;  //falta hacer que desaparezca el kyojin tambien
-					return;
+			for (int i = 0; i< kyojines.length; i++) {
+				if (proyectil.chocasteConKyojin(kyojines[i])) {
+					proyectil = null; // falta hacer que desaparezca el kyojin tambien
+					kyojines[i]= null;
+					return; 
 				}
-				//tendriamos que hacer que se elimine del array de kyojines creo
-				if (mikasa.getModoKyojin() && mikasa.chocasteConKyojin(k)) {
-						//kyojines.remove(k); 
-						//kyojinesMuertos ++;
-						//mikasa.transformacion();
-						return;
-				}
+				// tendriamos que hacer que se elimine del array de kyojines creo
 			}
+			
 			proyectil.avanzar();
 
 			if (proyectil.chocasteCon(entorno)) {
 				proyectil = null;
 			}
 		}
+		for (int i=0 ; i < kyojines.length; i ++)
+		if (mikasa.getModoKyojin() && mikasa.chocasteConKyojin(kyojines [i])) {
+			// kyojines.remove(k);
+			// kyojinesMuertos ++;
+			// mikasa.transformacion();
+			return;
+		}
+		
 	}
 
 	@SuppressWarnings("unused")

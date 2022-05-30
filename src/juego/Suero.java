@@ -31,6 +31,11 @@ public class Suero {
 				+ obstaculo.getTamaño() / 2;
 	}
 	
+	public boolean teGenerasteSobreUnObstaculo(Obstaculo obstaculo) {
+        return Math.sqrt(Math.pow(x - obstaculo.getX(), 2) + Math.pow(y - obstaculo.getY(), 2)) < tamaño / 2
+                + obstaculo.getTamaño() / 2;
+    }
+	
 	public double getX() {
 		return x;
 	}
@@ -42,10 +47,5 @@ public class Suero {
 	public double getTamaño() {
 		return tamaño;
 	}
-
-	
-//	public boolean teGenerasteSobreUnObstaculo (Obstaculo o) {
-//		return false;
-//	}
 
 }
