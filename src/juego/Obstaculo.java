@@ -1,6 +1,5 @@
 package juego;
 
-import java.awt.Color;
 import java.awt.Image;
 
 import entorno.Entorno;
@@ -18,7 +17,6 @@ public class Obstaculo {
 		this.x = x;
 		this.y = y;
 		this.tamaño = 60;
-
 		this.img = Herramientas.cargarImagen("arboles.png");
 
 	}

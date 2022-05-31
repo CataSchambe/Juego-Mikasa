@@ -1,6 +1,5 @@
 package juego;
 
-import java.awt.Color;
 import java.awt.Image;
 
 import entorno.Entorno;
@@ -14,7 +13,6 @@ public class Proyectil {
 	private double tamaño;
 	private double velocidad;
 	private double angulo;
-	private Color color;
 	private Image img;
 
 	public Proyectil(double x, double y, double angulo, double velocidad) {
@@ -23,7 +21,6 @@ public class Proyectil {
 		this.velocidad = velocidad;
 		this.angulo = angulo;
 		this.tamaño = 25;
-		this.color = Color.GREEN;
 		this.img = Herramientas.cargarImagen("proyectil.png");
 	}
 

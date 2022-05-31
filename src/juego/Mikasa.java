@@ -32,7 +32,7 @@ public class Mikasa {
 		this.imgMikasa = Herramientas.cargarImagen("mikasa.png");
 		this.imgTransformada = Herramientas.cargarImagen("transformada.png");
 		this.modoKyojin = false;
-		this.estaViva = true;
+		//this.estaViva = true;
 	}
 
 	public void dibujar(Entorno entorno) {
@@ -95,9 +95,9 @@ public class Mikasa {
 		modoKyojin = !modoKyojin;
 	}
 
-	public void morirse() {
-		estaViva = !estaViva;
-	}
+//	public void morirse() { //usar null
+//		estaViva = !estaViva;
+//	}
 
 	public Proyectil crearProyectil() {
 		return new Proyectil(x, y, angulo, 5);
@@ -155,12 +155,12 @@ public class Mikasa {
 		return y;
 	}
 
-	public boolean getModoKyojin() { // estasEnModoKyojin()
+	public boolean estasEnModoKyojin() {
 		return modoKyojin;
 	}
 
-	public boolean getEstaViva() {
-		return estaViva;
-	}
+//	public boolean getEstaViva() {   // verificar con == null o != null
+//		return estaViva;
+//	}
 
 }
