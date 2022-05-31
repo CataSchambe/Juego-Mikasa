@@ -85,17 +85,35 @@ public class Juego extends InterfaceJuego {
 	}
 
 	public void tick() {
-//		if (perdiste) {
-//			// hacés lo de perder
-//			return;
-//		}
-//		
-//		if (ganaste) {
-//			// hacés lo de ganar
-//			return;
-//		}
+		if (mikasa==null) {
+			entorno.dibujarImagen(fondoGameOver, entorno.ancho() / 2, entorno.alto() / 2, 0, 1);
+			entorno.cambiarFont("Segoe UI", 50, Color.RED);
+			entorno.escribirTexto("GAME OVER", entorno.ancho() / 3, entorno.alto() / 6);
+
+			entorno.cambiarFont("Segoe UI", 20, Color.WHITE);
+			entorno.escribirTexto("No has podido salvar a Mikasa de las garras de los kyojines.", entorno.ancho() / 4.5,
+				entorno.alto() / 5 + 20);
+
+			entorno.cambiarFont("Arial", 20, Color.BLACK);
+			entorno.escribirTexto("Kyojines eliminados: " + kyojinesEliminados, entorno.ancho() / 2.5, entorno.alto() - 50);
+			entorno.escribirTexto("Tiempo de juego: " + segundos, entorno.ancho() / 2.5, entorno.alto() - 30);
+		}		
 		
-		if (kyojinesEnPantalla > 0 && mikasa!=null) { //remplazo el estaViva()
+		if (kyojinesEnPantalla == 0) {
+			entorno.dibujarImagen(fondoVictoria, entorno.ancho() / 2, entorno.alto() / 2, 0, 1);
+			entorno.cambiarFont("Segoe UI", 50, Color.YELLOW);
+			entorno.escribirTexto("¡GANASTE!", entorno.ancho() / 10, entorno.alto() / 6);
+
+			entorno.cambiarFont("Segoe UI", 20, Color.WHITE);
+			entorno.escribirTexto("Has eliminado a todos los kyojines.", entorno.ancho() / 10, entorno.alto() / 5 + 20);
+
+			entorno.cambiarFont("Arial", 20, Color.WHITE);
+			entorno.escribirTexto("Kyojines eliminados: " + kyojinesEliminados, entorno.ancho() / 10,
+				entorno.alto() / 2 - 20);
+			entorno.escribirTexto("Tiempo de juego: " + segundos, entorno.ancho() / 10, entorno.alto() / 2 + 20);
+		}
+		
+		if (kyojinesEnPantalla > 0 && mikasa!=null) { 
 			entorno.dibujarImagen(fondo, entorno.ancho() / 2, entorno.alto() / 2, 0);
 			mikasa.dibujar(entorno);
 
@@ -244,43 +262,6 @@ public class Juego extends InterfaceJuego {
 				}
 			}
 		}
-
-		if (kyojinesEnPantalla == 0) {
-			victoria();
-		}
-
-		if (mikasa==null) {
-			gameOver();
-		}
-
-	}
-
-	private void victoria() {
-		entorno.dibujarImagen(fondoVictoria, entorno.ancho() / 2, entorno.alto() / 2, 0, 1);
-		entorno.cambiarFont("Segoe UI", 50, Color.YELLOW);
-		entorno.escribirTexto("¡GANASTE!", entorno.ancho() / 10, entorno.alto() / 6);
-
-		entorno.cambiarFont("Segoe UI", 20, Color.WHITE);
-		entorno.escribirTexto("Has eliminado a todos los kyojines.", entorno.ancho() / 10, entorno.alto() / 5 + 20);
-
-		entorno.cambiarFont("Arial", 20, Color.WHITE);
-		entorno.escribirTexto("Kyojines eliminados: " + kyojinesEliminados, entorno.ancho() / 10,
-				entorno.alto() / 2 - 20);
-		entorno.escribirTexto("Tiempo de juego: " + segundos, entorno.ancho() / 10, entorno.alto() / 2 + 20);
-	}
-
-	private void gameOver() {
-		entorno.dibujarImagen(fondoGameOver, entorno.ancho() / 2, entorno.alto() / 2, 0, 1);
-		entorno.cambiarFont("Segoe UI", 50, Color.RED);
-		entorno.escribirTexto("GAME OVER", entorno.ancho() / 3, entorno.alto() / 6);
-
-		entorno.cambiarFont("Segoe UI", 20, Color.WHITE);
-		entorno.escribirTexto("No has podido salvar a Mikasa de las garras de los kyojines.", entorno.ancho() / 4.5,
-				entorno.alto() / 5 + 20);
-
-		entorno.cambiarFont("Arial", 20, Color.BLACK);
-		entorno.escribirTexto("Kyojines eliminados: " + kyojinesEliminados, entorno.ancho() / 2.5, entorno.alto() - 50);
-		entorno.escribirTexto("Tiempo de juego: " + segundos, entorno.ancho() / 2.5, entorno.alto() - 30);
 	}
 
 	@SuppressWarnings("unused")

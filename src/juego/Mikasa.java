@@ -1,6 +1,5 @@
 package juego;
 
-import java.awt.Color;
 import java.awt.Image;
 import entorno.Entorno;
 import entorno.Herramientas;
@@ -16,11 +15,9 @@ public class Mikasa {
 	private double tamaño;
 
 	private boolean modoKyojin;
-//	private boolean estaViva;
 
 	private Image imgMikasa;
 	private Image imgTransformada;
-	private Color color;
 
 	public Mikasa(double x, double y, double velocidad, double angulo) {
 		this.x = x;
@@ -28,11 +25,9 @@ public class Mikasa {
 		this.velocidad = velocidad;
 		this.angulo = angulo;
 		this.tamaño = 50;
-		this.color = Color.YELLOW;
 		this.imgMikasa = Herramientas.cargarImagen("mikasa.png");
 		this.imgTransformada = Herramientas.cargarImagen("transformada.png");
 		this.modoKyojin = false;
-		//this.estaViva = true;
 	}
 
 	public void dibujar(Entorno entorno) {
@@ -95,10 +90,6 @@ public class Mikasa {
 		modoKyojin = !modoKyojin;
 	}
 
-//	public void morirse() { //usar null
-//		estaViva = !estaViva;
-//	}
-
 	public Proyectil crearProyectil() {
 		return new Proyectil(x, y, angulo, 5);
 	}
@@ -158,9 +149,5 @@ public class Mikasa {
 	public boolean estasEnModoKyojin() {
 		return modoKyojin;
 	}
-
-//	public boolean getEstaViva() {   // verificar con == null o != null
-//		return estaViva;
-//	}
 
 }
