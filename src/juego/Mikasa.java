@@ -44,7 +44,7 @@ public class Mikasa {
 		y = y + Math.sin(angulo) * velocidad;
 	}
 
-	public void detenerse(Entorno entorno) {
+	public void detenerseAnteElEntorno(Entorno entorno) {
 		if (chocasteLadoIzquierdo(entorno)) {
 			x = tamaño / 2;
 		}
@@ -59,7 +59,7 @@ public class Mikasa {
 		}
 	}
 
-	public void detenerseObs(Obstaculo obstaculo) { // FIXME
+	public void detenerseAnteUnObstaculo(Obstaculo obstaculo) { // FIXME
 		if (x < obstaculo.getX() && y < obstaculo.getY()) {
 			x -= velocidad;
 			y -= velocidad;

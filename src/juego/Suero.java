@@ -10,17 +10,17 @@ public class Suero {
 	private double y;
 	private double tamaño;
 
-	private Image imgPocion;
+	private Image img;
 
 	public Suero(double x, double y) {
 		this.x = x;
 		this.y = y;
 		this.tamaño = 0.5;
-		this.imgPocion = Herramientas.cargarImagen("suero.png");
+		this.img = Herramientas.cargarImagen("suero.png");
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarImagen(imgPocion, x, y, 0, 0.1);
+		e.dibujarImagen(img, x, y, 0, 0.1);
 	}
 
 	public boolean teGenerasteSobreUnObstaculo(Obstaculo obstaculo) {

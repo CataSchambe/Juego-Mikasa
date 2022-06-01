@@ -22,7 +22,7 @@ public class Obstaculo {
 	}
 
 	public void dibujar(Entorno e) {
-		e.dibujarImagen(img, x, y, 0, 0.2); // FIXME
+		e.dibujarImagen(img, x, y, 0, 0.2);
 	}
 
 	public double getX() {

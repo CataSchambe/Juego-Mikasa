@@ -19,7 +19,7 @@ public class Kyojin {
 		this.x = x;
 		this.y = y;
 		this.velocidad = velocidad;
-		this.angulo = angulo;
+		this.angulo = 0;
 		this.tamaño = 50;
 		this.img = Herramientas.cargarImagen("kyojin.png");
 	}
@@ -51,7 +51,7 @@ public class Kyojin {
 		angulo += Math.PI / 2;
 	}
 
-	public void moverseDireccionOpuesta() {
+	public void moverseEnDireccionOpuesta() {
 		x = x + Math.cos(angulo) * velocidad;
 		y = y + Math.sin(angulo) * velocidad;
 	}
@@ -66,7 +66,7 @@ public class Kyojin {
 				+ obstaculo.getTamaño() / 2;
 	}
 
-	public void detenerse(Kyojin kyojin) {
+	public void detenerseAnteOtroKyojin(Kyojin kyojin) {
 		if (x < kyojin.getX() && y < kyojin.getY()) {
 			x -= velocidad;
 			y -= velocidad;
@@ -85,7 +85,7 @@ public class Kyojin {
 		}
 	}
 
-	public void detenerseObs(Obstaculo obstaculo) {
+	public void detenerseAnteUnObstaculo(Obstaculo obstaculo) {
 		if (x < obstaculo.getX() && y < obstaculo.getY()) {
 			x -= velocidad;
 			y -= velocidad;
