@@ -36,7 +36,6 @@ public class Mikasa {
 		} else {
 			entorno.dibujarImagen(imgTransformada, x, y, angulo, 0.28);
 		}
-
 	}
 
 	public void avanzar() {
