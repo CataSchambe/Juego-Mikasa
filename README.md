@@ -17,8 +17,6 @@ Principalmente tuvimos inconvenientes en decidir que forma le dábamos 
 
 
 .movimiento de mikasa
-
-[source, java]
 ----
     public void avanzar() {
 		x = x + Math.cos(angulo) * velocidad;
