@@ -1,6 +1,6 @@
 Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
-==Introducción
+=== Introducción
 
 El trabajo práctico se basa en la programación de un juego llamado _Attack
 on Titan, Final Season_, el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
@@ -11,12 +11,13 @@ Mikasa Ackerman sera nuestra heroína y el personaje principal del jueg
 
 Para programar el juego contamos con un Apéndice de implementación base y un entorno.
 
-==Descripción
+=== Descripción
 
 Principalmente tuvimos inconvenientes en decidir que forma le dábamos a Mikasa (círculo, rectángulo, triángulo, etc.) pero por suerte nos logramos poner de acuerdo en que sería mucho más fácil que sea un circulo para poder darle movimiento mediante un angulo mediante trigonometría.
 
-----
+
 .movimiento de mikasa
+----
 [source, java]
     public void avanzar() {
 		x = x + Math.cos(angulo) * velocidad;
