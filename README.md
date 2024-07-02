@@ -1,6 +1,6 @@
 Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
-=== Introducción
+<h1> Introducción </h1>
 
 El trabajo práctico se basa en la programación de un juego llamado _Attack
 on Titan, Final Season_, el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
@@ -11,12 +11,12 @@ Mikasa Ackerman sera nuestra heroína y el personaje principal del jueg
 
 Para programar el juego contamos con un Apéndice de implementación base y un entorno.
 
-=== Descripción
+<h2> Descripción </h2>
 
 Principalmente tuvimos inconvenientes en decidir que forma le dábamos a Mikasa (círculo, rectángulo, triángulo, etc.) pero por suerte nos logramos poner de acuerdo en que sería mucho más fácil que sea un circulo para poder darle movimiento mediante un angulo mediante trigonometría.
 
 
-.movimiento de mikasa
+Movimiento de mikasa
 ----
     public void avanzar() {
 		x = x + Math.cos(angulo) * velocidad;
@@ -24,15 +24,12 @@ Principalmente tuvimos inconvenientes en decidir que forma le dábamos 
 	}
 ----
 
-Luego se nos hizo muy complicado el tema de las colisiones tanto los kyojines entre ellos
-como mikasa con los obstáculos, ó los kyojines con los obstáculos, pero
-por suerte logramos darnos cuenta en donde estaba el error debatiendo bien a quien había que preguntarle "che chocaste
-con ...".
+Luego se nos hizo muy complicado el tema de las colisiones tanto los kyojines entre ellos como mikasa con los obstáculos, ó los kyojines con los obstáculos, pero por suerte logramos darnos cuenta en donde estaba el error debatiendo bien a quien había que preguntarle "che chocaste con ...".
 
 Luego se nos dificulto la generación de los kyojines y del proyectil, ya que con el proyectil en primer momento solo se lanzaba por 1 segundo, pero lo arreglamos implementando un if en la clase juego.
+
+Creacion del proyectil
 ----
-.Creacion del proyectil
-[source, java]
     if (proyectil != null) {
     proyectil.dibujar(entorno);
     for (Obstaculo o : obstaculos) {
@@ -50,17 +47,12 @@ Luego se nos dificulto la generación de los kyojines y del proyectil
 		}
 ----
   
-Los últimos problemas que se nos presentaron fue como hacer
-como hacer para que en un determinado tiempo se regeneren, luego nos
-dimos cuenta que podíamos hacerla con uno de los métodos hechos en clase
-que nos permitía eliminar elementos de un array y de esta manera si el
-proyectil toca al kyojin, el kyojin "muere" y desaparece de la pantalla. 
+Los últimos problemas que se nos presentaron fue como hacer como hacer para que en un determinado tiempo se regeneren, luego nos dimos cuenta que podíamos hacerla con uno de los métodos hechos en clase
+que nos permitía eliminar elementos de un array y de esta manera si el proyectil toca al kyojin, el kyojin "muere" y desaparece de la pantalla. 
 
 En la clase juego
-
+Regeneracion de Kyojines
 ----
-.Regeneracion de Kyojines
-[source, java]
     if (intervaloKyojines % 960 == 0) { // chequea la cantidad de kyojines cada aprox 15 segundos
 			for (int i = 0; i < kyojines.length; i++) {
 				if (kyojines[i] == null) {
@@ -78,27 +70,18 @@ En la clase juego
 			}
 		}
 ----
-Después tuvimos complicaciones con las colisiones del proyectil ya que
-si bien andaba bien el juego y demás, internamente nos tiraba
-excepciones y errores, pero sorprendentemente se solucionó añadiendo un
-return al final del método. Luego aparecieron más excepciones, llegando a un punto de que los errores hacian al juego injugable, lo que llevo a una revision entera del codigo para llegar a la conclusion de que habia que preguntar siempre si el objeto a comparar no era un null.
+Después tuvimos complicaciones con las colisiones del proyectil ya quesi bien andaba bien el juego y demás, internamente nos tiraba excepciones y errores, pero sorprendentemente se solucionó añadiendo un return al final del método. Luego aparecieron más excepciones, llegando a un punto de que los errores hacian al juego injugable, lo que llevo a una revision entera del codigo para llegar a la conclusion de que habia que preguntar siempre si el objeto a comparar no era un null.
 
 Nos pareció buena idea sumarle una pantalla al finalizar que muestre el típico cartel de "GAME OVER" y otro cartel que indique cuando ganaste. Con esto tambien tuvimos un problema de entrada, ya que se ejecutaban los carteles pero el metodo tick seguia corriendo. Para esto tuvimos que preguntar de entrada si mikasa existia y si habían kyojines en la pantalla.
 
 *Implementación* 
-
-----
 .Clase Juego
-[source, java]
+----
 package juego;
-
 import entorno.Herramientas;
-
 import java.awt.Color;
 import java.awt.Image;
-
 import entorno.Entorno;
-
 import entorno.InterfaceJuego;
 
 public class Juego extends InterfaceJuego {
@@ -374,7 +357,7 @@ public class Juego extends InterfaceJuego {
     }
 ----
 
-==Conclusiones
+<h3> Conclusiones </h3>
 * En este informe, tomamos algunas decisiones importantes en el diseño del código, como mantener
 funciones separadas en archivos y establecer el nivel de aislamiento externamente para evitar
 posibles errores internos. Estas elecciones contribuyeron a una estructura más organizada y fácil
