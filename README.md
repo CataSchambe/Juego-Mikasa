@@ -2,8 +2,7 @@ Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
 <h1> Introducción </h1>
 
-El trabajo práctico se basa en la programación de un juego llamado _Attack
-on Titan, Final Season_, el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
+El trabajo práctico se basa en la programación de un juego llamado _Attack on Titan, Final Season_, el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
 
 Para combatir a los kyojines las Fuerzas Armadas de la Humanidad crearon La Legión de Reconocimiento encargada de exterminarlos.
 
@@ -319,7 +318,8 @@ public class Juego extends InterfaceJuego {
 		}
 
 	}
-//Pantalla de Victoria 
+//Pantalla de Victoria
+----
 	private void victoria() {
 		entorno.dibujarImagen(fondoVictoria, entorno.ancho() / 2, entorno.alto() / 2, 0, 1);
 		entorno.cambiarFont("Segoe UI", 50, Color.YELLOW);
@@ -333,8 +333,9 @@ public class Juego extends InterfaceJuego {
 				entorno.alto() / 2 - 20);
 		entorno.escribirTexto("Tiempo de juego: " + segundos, entorno.ancho() / 10, entorno.alto() / 2 + 20);
 	}
-
+----
 //Pantalla de GameOver
+----
 	private void gameOver() {
 		entorno.dibujarImagen(fondoGameOver, entorno.ancho() / 2, entorno.alto() / 2, 0, 1);
 		entorno.cambiarFont("Segoe UI", 50, Color.RED);
@@ -356,24 +357,16 @@ public class Juego extends InterfaceJuego {
 
     }
 ----
+----
 
 <h3> Conclusiones </h3>
-* En este informe, tomamos algunas decisiones importantes en el diseño del código, como mantener
-funciones separadas en archivos y establecer el nivel de aislamiento externamente para evitar
-posibles errores internos. Estas elecciones contribuyeron a una estructura más organizada y fácil
-de entender.
+
+* En este informe, tomamos algunas decisiones importantes en el diseño del código, como mantener funciones separadas en archivos y establecer el nivel de aislamiento externamente para evitar
+posibles errores internos. Estas elecciones contribuyeron a una estructura más organizada y fácil de entender.
 
 
-* En cuanto al código en Go, implementamos un menú interactivo que facilita la interacción del
-usuario con el sistema de gestión de pedidos. La modularidad del código en funciones facilita la
-comprensión y el mantenimiento, algo que valoramos mucho como equipo.
-La función de generación de correos electrónicos mediante triggers nos pareció una forma inteligente
-de mantener a los clientes informados sobre el estado de sus pedidos.
+* En cuanto al código en Go, implementamos un menú interactivo que facilita la interacción del usuario con el sistema de gestión de pedidos. La modularidad del código en funciones facilita la
+comprensión y el mantenimiento, algo que valoramos mucho como equipo. La función de generación de correos electrónicos mediante triggers nos pareció una forma inteligente de mantener a los clientes informados sobre el estado de sus pedidos.
 
 
-* En general, estamos satisfechos con el resultado. Aprendimos mucho durante el proceso, no solo
-técnicamente, sino también en términos de trabajo en equipo y toma de decisiones. Creemos que
-hemos logrado construir un sistema funcional y robusto que cumple con los requisitos del trabajo
-practico. Fue un trabajo en equipo increíble y nos permitió comprender mejor la importancia y
-utilidad de las funciones y triggers en PL/pgSQL para mantener la consistencia y la integridad de los
-datos.
+* En general, estamos satisfechos con el resultado. Aprendimos mucho durante el proceso, no solo técnicamente, sino también en términos de trabajo en equipo y toma de decisiones. Creemos que hemos logrado construir un sistema funcional y robusto que cumple con los requisitos del trabajo practico. Fue un trabajo en equipo increíble y nos permitió comprender mejor la importancia y utilidad de las funciones y triggers en PL/pgSQL para mantener la consistencia y la integridad de los datos.
