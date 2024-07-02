@@ -1,6 +1,6 @@
 Schamberger Catalina <catalinaschamberger@hotmail.com.ar> *Legajo: 44505881*
 
-== Introducción
+==Introducción
 
 El trabajo práctico se basa en la programación de un juego llamado _Attack
 on Titan, Final Season_, el cual ocurre en la Isla Paradis donde hay unos malvados gigantes de forma humanoide, llamados kyojines,que invaden las ciudades y aplastan todo a su paso.
@@ -11,13 +11,13 @@ Mikasa Ackerman sera nuestra heroína y el personaje principal del jueg
 
 Para programar el juego contamos con un Apéndice de implementación base y un entorno.
 
-== Descripción
+==Descripción
 
 Principalmente tuvimos inconvenientes en decidir que forma le dábamos a Mikasa (círculo, rectángulo, triángulo, etc.) pero por suerte nos logramos poner de acuerdo en que sería mucho más fácil que sea un circulo para poder darle movimiento mediante un angulo mediante trigonometría.
 
+----
 .movimiento de mikasa
 [source, java]
-----
     public void avanzar() {
 		x = x + Math.cos(angulo) * velocidad;
 		y = y + Math.sin(angulo) * velocidad;
@@ -30,11 +30,9 @@ por suerte logramos darnos cuenta en donde estaba el error debatiendo�
 con ...".
 
 Luego se nos dificulto la generación de los kyojines y del proyectil, ya que con el proyectil en primer momento solo se lanzaba por 1 segundo, pero lo arreglamos implementando un if en la clase juego.
-
-.Creacion del proyectil
-
-[source, java]
 ----
+.Creacion del proyectil
+[source, java]
     if (proyectil != null) {
     proyectil.dibujar(entorno);
     for (Obstaculo o : obstaculos) {
@@ -60,10 +58,9 @@ proyectil toca al kyojin, el kyojin "muere" y desaparece de la pantalla.
 
 En la clase juego
 
-.Regeneracion de Kyojines
-
-[source, java]
 ----
+.Regeneracion de Kyojines
+[source, java]
     if (intervaloKyojines % 960 == 0) { // chequea la cantidad de kyojines cada aprox 15 segundos
 			for (int i = 0; i < kyojines.length; i++) {
 				if (kyojines[i] == null) {
@@ -90,10 +87,9 @@ Nos pareció buena idea sumarle una pantalla al finalizar que muestre�
 
 *Implementación* 
 
-.Clase Juego
-
-[source, java]
 ----
+.Clase Juego
+[source, java]
 package juego;
 
 import entorno.Herramientas;
@@ -378,7 +374,7 @@ public class Juego extends InterfaceJuego {
     }
 ----
 
-== Conclusiones
+==Conclusiones
 * En este informe, tomamos algunas decisiones importantes en el diseño del código, como mantener
 funciones separadas en archivos y establecer el nivel de aislamiento externamente para evitar
 posibles errores internos. Estas elecciones contribuyeron a una estructura más organizada y fácil
